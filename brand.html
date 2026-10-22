@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brand Identity — Doula's House</title>
+<meta name="description" content="Doula's House brand identity: strategy, the Doorway Bloom mark, colour, typography, graphic language, voice and applications.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  /* ---- Brand book layout ---- */
+  .cover { background: var(--mocha-3); color: var(--cream); position: relative; overflow: hidden; padding-block: clamp(72px, 11vw, 150px); background-image: radial-gradient(900px 600px at 82% 0%, rgba(209,160,79,.2), transparent 62%); }
+  .cover-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 48px; align-items: center; }
+  .cover h1 { font-size: clamp(3rem, 8.4vw, 7.4rem); letter-spacing: -.04em; line-height: .94; }
+  .cover h1 em { color: var(--camel); }
+  .cover .meta { display: flex; gap: 28px; flex-wrap: wrap; margin-top: var(--s7); font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: #cbbfae; }
+  .cover .lead { color: #eadfcb; }
+  .cover-mark { width: min(100%, 360px); justify-self: center; }
+  @media (max-width: 860px) { .cover-grid { grid-template-columns: minmax(0, 1fr); } .cover-mark { width: 200px; justify-self: start; } }
+  .bk { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 56px; padding-top: 24px; }
+  .bk-nav { position: sticky; top: calc(var(--header-h) + 24px); align-self: start; display: grid; gap: 2px; font-size: .84rem; padding-top: 56px; }
+  .bk-nav a { padding: 7px 12px; border-left: 2px solid var(--line); text-decoration: none; color: var(--muted); transition: .15s; }
+  .bk-nav a:hover { color: var(--ink); }
+  .bk-nav a.on { border-color: var(--clay); color: var(--ink); font-weight: 600; }
+  @media (max-width: 980px) { .bk { grid-template-columns: minmax(0, 1fr); gap: 0; } .bk-nav { display: none; } }
+  .chapter { padding-block: clamp(56px, 8vw, 96px); border-top: 1px solid var(--line); scroll-margin-top: 90px; }
+  .chapter:first-child { border-top: 0; }
+  .ch-head { display: grid; gap: 14px; margin-bottom: var(--s7); max-width: 760px; }
+  .ch-no { font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: var(--gold); letter-spacing: .02em; }
+  .ch-head h2 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); }
+  .sub { margin: var(--s8) 0 var(--s5); display: flex; align-items: baseline; gap: 14px; }
+  .sub h3 { font-size: 1.5rem; }
+  .sub span { font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); font-weight: 650; }
+  .tile { border-radius: var(--r-lg); background: #fff; border: 1px solid var(--line-soft); padding: var(--s6); display: grid; place-items: center; position: relative; min-height: 200px; }
+  .tile.cream { background: var(--cream); border-color: transparent; } .tile.hearth { background: var(--mocha-3); border-color: transparent; color: var(--cream); } .tile.clay { background: var(--clay); border-color: transparent; color: var(--cream); } .tile.sand { background: var(--sand); border-color: transparent; }
+  .tile .cap { position: absolute; left: 16px; bottom: 12px; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 650; opacity: .7; }
+  .tile .x { position: absolute; top: 12px; right: 12px; width: 26px; height: 26px; border-radius: 50%; background: var(--bad); color: #fff; display: grid; place-items: center; font-size: .8rem; font-weight: 700; }
+  .tile .ok { position: absolute; top: 12px; right: 12px; width: 26px; height: 26px; border-radius: 50%; background: var(--ok); color: #fff; display: grid; place-items: center; font-size: .8rem; font-weight: 700; }
+  .lockup-h { display: flex; align-items: center; gap: .55em; white-space: nowrap; font-family: var(--font-display); font-weight: 330; font-variation-settings: "SOFT" 100, "WONK" 0, "opsz" 144; letter-spacing: -.022em; line-height: 1; }
+  .lockup-h svg { height: 1.17em; width: auto; flex: none; }
+  .lockup-s { display: grid; justify-items: center; gap: .3em; text-align: center; font-family: var(--font-display); font-weight: 330; font-variation-settings: "SOFT" 100, "WONK" 0, "opsz" 144; letter-spacing: -.022em; line-height: 1; }
+  .lockup-s svg { height: 1.7em; width: auto; margin-bottom: .22em; }
+  .lockup-s small { font-family: var(--font-sans); font-size: .17em; letter-spacing: .34em; text-transform: uppercase; font-weight: 650; margin-top: .6em; opacity: .85; }
+  .statement { font-family: var(--font-display); font-size: clamp(1.7rem, 3.4vw, 2.7rem); line-height: 1.22; letter-spacing: -.02em; font-weight: 340; max-width: 28ch; }
+  .statement em { color: var(--clay); font-variation-settings: "SOFT" 100, "WONK" 1; }
+  .manifesto { background: var(--cream); border-radius: var(--r-lg); padding: clamp(32px, 6vw, 72px); }
+  .manifesto p { font-family: var(--font-display); font-size: clamp(1.35rem, 2.6vw, 2rem); line-height: 1.35; letter-spacing: -.015em; font-weight: 340; margin: 0 0 .9em; max-width: 34ch; }
+  .manifesto p:last-child { margin: 0; color: var(--clay); font-style: italic; }
+  .platform { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s4); }
+  @media (max-width: 900px) { .platform { grid-template-columns: repeat(2, minmax(0, 1fr)); } } @media (max-width: 560px) { .platform { grid-template-columns: 1fr; } }
+  .plat { background: #fff; border: 1px solid var(--line-soft); border-radius: var(--r-md); padding: 22px; }
+  .plat .k { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 700; color: var(--gold); margin-bottom: 10px; display: block; }
+  .plat p { margin: 0; font-size: .96rem; }
+  .plat.big { grid-column: 1 / -1; background: var(--mocha-3); color: var(--cream); border: 0; } .plat.big .k { color: var(--camel); } .plat.big p { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2.3rem); letter-spacing: -.02em; line-height: 1.2; font-weight: 340; }
+  .strand { border-radius: var(--r-lg); padding: 28px; color: var(--ink); display: grid; gap: 10px; align-content: start; }
+  .strand b { font-family: var(--font-display); font-size: 1.8rem; font-weight: 380; letter-spacing: -.02em; } .strand .sw { width: 44px; height: 8px; border-radius: 4px; background: currentColor; }
+  .trait { border-top: 2px solid var(--ink); padding-top: 16px; } .trait h4 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 380; letter-spacing: -.02em; margin-bottom: 8px; } .trait .not { color: var(--muted); font-size: .9rem; }
+  .callouts { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 40px; align-items: center; }
+  @media (max-width: 800px) { .callouts { grid-template-columns: 1fr; } }
+  .legend { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; counter-reset: l; }
+  .legend li { display: grid; grid-template-columns: 34px 1fr; gap: 14px; counter-increment: l; }
+  .legend li::before { content: counter(l); width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: var(--cream); display: grid; place-items: center; font-size: .78rem; font-weight: 700; margin-top: 2px; }
+  .legend b { display: block; }
+  .swatch-card { border-radius: var(--r-md); overflow: hidden; border: 1px solid var(--line-soft); background: #fff; }
+  .swatch-card .c { height: 120px; display: flex; align-items: flex-end; padding: 12px 14px; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
+  .swatch-card .d { padding: 14px; font-size: .8rem; display: grid; gap: 2px; } .swatch-card .d b { font-size: .98rem; } .swatch-card .d code { font-family: ui-monospace, Menlo, monospace; font-size: .74rem; color: var(--muted); }
+  .prop { display: flex; height: 64px; border-radius: var(--r-pill); overflow: hidden; border: 1px solid var(--line); }
+  .prop span { display: grid; place-items: center; font-size: .72rem; font-weight: 700; }
+  .cmx { width: 100%; border-collapse: collapse; font-size: .86rem; } .cmx td, .cmx th { padding: 10px 14px; border-top: 1px solid var(--line-soft); text-align: left; } .cmx th { background: var(--cream); border-top: 0; }
+  .cmx .sample { display: inline-block; padding: 4px 14px; border-radius: 8px; font-family: var(--font-display); font-size: 1.1rem; }
+  .spec-type { display: grid; gap: 6px; }
+  .spec-type .big { font-size: clamp(3.4rem, 9vw, 7rem); line-height: .95; letter-spacing: -.03em; }
+  .scale-row { display: grid; grid-template-columns: 150px minmax(0, 1fr) 170px; gap: 20px; align-items: baseline; padding: 16px 0; border-top: 1px solid var(--line-soft); }
+  .scale-row code { font-family: ui-monospace, Menlo, monospace; font-size: .72rem; color: var(--muted); }
+  @media (max-width: 760px) { .scale-row { grid-template-columns: 1fr; gap: 4px; } }
+  .arch-demo { width: 100%; max-width: 280px; aspect-ratio: 3/4; border-radius: 999px 999px var(--r-md) var(--r-md); overflow: hidden; background: var(--mocha); }
+  .arch-demo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }
+  @keyframes archrise { from { clip-path: inset(100% 0 0 0 round 999px 999px 24px 24px); } to { clip-path: inset(0 0 0 0 round 999px 999px 24px 24px); } }
+  .arch-demo.play { animation: archrise 1100ms cubic-bezier(.2,.7,.2,1) both; }
+  .icon-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+  @media (max-width: 700px) { .icon-grid { grid-template-columns: repeat(4, 1fr); } }
+  .icon-cell { aspect-ratio: 1; border-radius: var(--r-md); background: #fff; border: 1px solid var(--line-soft); display: grid; place-items: center; color: var(--umber); } .icon-cell svg { width: 28px; height: 28px; }
+  .dd { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s4); }
+  @media (max-width: 700px) { .dd { grid-template-columns: 1fr; } }
+  .dd > div { border-radius: var(--r-md); padding: 20px 22px; } .dd .do { background: var(--ok-bg); color: #243a21; } .dd .dont { background: var(--bad-bg); color: #4f1913; }
+  .dd h4 { margin-bottom: 8px; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; } .dd ul { margin: 0; padding-left: 1.1em; font-size: .92rem; } .dd li { margin-bottom: 6px; }
+  .voice-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--line-soft); }
+  .voice-row > div { padding: 18px 22px; } .voice-row .before { color: var(--muted); text-decoration: line-through; text-decoration-color: rgba(170,79,54,.5); } .voice-row .after { font-family: var(--font-display); font-size: 1.25rem; letter-spacing: -.01em; background: var(--cream); }
+  @media (max-width: 700px) { .voice-row { grid-template-columns: 1fr; } }
+  .story-mock { width: 100%; max-width: 270px; aspect-ratio: 9/16; border-radius: 28px; overflow: hidden; position: relative; background: var(--cream); box-shadow: var(--shadow-lg); display: grid; grid-template-rows: auto 1fr auto; padding: 22px; gap: 14px; justify-self: center; }
+  .story-mock .arch { width: 100%; height: 100%; border-radius: 999px 999px 18px 18px; overflow: hidden; } .story-mock img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 10%; }
+  .post-mock { width: 100%; max-width: 360px; aspect-ratio: 1; border-radius: 6px; background: var(--clay); color: var(--cream); padding: 28px; display: grid; align-content: space-between; box-shadow: var(--shadow-lg); justify-self: center; }
+  .post-mock blockquote { margin: 0; font-family: var(--font-display); font-style: italic; font-size: 1.45rem; line-height: 1.22; letter-spacing: -.015em; }
+  .bcard { width: 100%; max-width: 340px; aspect-ratio: 1.75; border-radius: 6px; box-shadow: var(--shadow-md); padding: 22px; display: grid; align-content: space-between; justify-self: center; }
+  .bcard.front { background: var(--mocha-3); color: var(--cream); } .bcard.back { background: var(--cream); color: var(--ink); font-size: .74rem; }
+  .arch-stack { display: grid; gap: 22px; justify-items: center; }
+  .arch-note { font-size: .8rem; color: var(--muted); max-width: 30ch; text-align: center; }
+  .dl { display: grid; grid-template-columns: 70px 1fr auto; gap: 16px; align-items: center; padding: 14px 0; border-top: 1px solid var(--line-soft); }
+  .dl .pv { width: 70px; height: 56px; border-radius: 10px; display: grid; place-items: center; background: var(--cream); padding: 8px; } .dl .pv img { max-height: 100%; }
+  pre.code { background: var(--mocha-3); color: #eadfcb; border-radius: var(--r-md); padding: 20px; font-size: .78rem; overflow: auto; line-height: 1.6; }
+  .arch-diagram { display: grid; gap: 18px; }
+  .master { background: var(--mocha-3); color: var(--cream); border-radius: var(--r-lg); padding: 30px; display: grid; justify-items: center; text-align: center; gap: 8px; }
+  .lines { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; position: relative; } @media (max-width: 860px) { .lines { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .line { border: 1px solid var(--line); border-radius: var(--r-md); padding: 20px; background: #fff; display: grid; gap: 8px; }
+  .line .nm { font-family: var(--font-display); font-size: 1.35rem; letter-spacing: -.02em; line-height: 1.1; } .line .nm small { display: block; font-family: var(--font-sans); font-size: .62rem; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-top: 4px; }
+  .line p { margin: 0; font-size: .86rem; color: var(--muted); }
+</style>
+</head>
+<body data-page="brand">
+<div id="site-header"></div>
+<main id="main">
+
+<!-- COVER -->
+<section class="cover">
+  <div class="orn orn-tr gold" style="opacity:.7"></div>
+  <div class="container cover-grid">
+    <div>
+      <span class="eyebrow" style="color:var(--camel)">Brand identity · Version 2.0 · October 2026</span>
+      <h1 style="margin-top:28px">One circle of care around <em>every mother.</em></h1>
+      <p class="lead" style="margin-top:32px">The identity system for Doula’s House: who we are, how we look, how we sound, and how it all comes together.</p>
+      <div class="meta"><span>01 Strategy</span><span>02 Identity</span><span>03 Colour</span><span>04 Type</span><span>05 Graphic language</span><span>06 Imagery</span><span>07 Voice</span><span>08 Applications</span><span>09 Architecture</span><span>10 Assets</span></div>
+    </div>
+    <div class="cover-mark" id="cover-mark"></div>
+  </div>
+</section>
+
+<div class="container bk">
+  <nav class="bk-nav" id="bk-nav" aria-label="Chapters">
+    <a href="#strategy">01 Strategy</a><a href="#identity">02 Identity</a><a href="#colour">03 Colour</a><a href="#type">04 Typography</a><a href="#language">05 Graphic language</a><a href="#imagery">06 Imagery</a><a href="#voice">07 Voice</a><a href="#applications">08 Applications</a><a href="#architecture">09 Architecture</a><a href="#assets">10 Assets</a>
+  </nav>
+  <div>
+
+<!-- 01 STRATEGY -->
+<section class="chapter" id="strategy">
+  <div class="ch-head"><span class="ch-no">01</span><h2>Strategy</h2><p class="lead">Doula’s House exists because birth has never been a solo act — and the people who make it safe too rarely work as one.</p></div>
+
+  <div class="manifesto reveal">
+    <p>Birth has never been a solo act.</p>
+    <p>It takes a mother, and the person who holds her hand, and the person who holds the chart. Too often, they never meet.</p>
+    <p>We build the doorway between them — one plan, shared with care, honoured by everyone in the room — so no mother has to repeat herself, plead to be believed, or recover alone.</p>
+    <p>Three strands. One circle. One door. Welcome home.</p>
+  </div>
+
+  <div class="sub"><h3>Brand platform</h3><span>What we stand for</span></div>
+  <div class="platform">
+    <div class="plat big"><span class="k">Brand idea</span><p>One circle of care around every mother.</p></div>
+    <div class="plat"><span class="k">Purpose</span><p>Every mother held by a team that works as one.</p></div>
+    <div class="plat"><span class="k">Vision</span><p>A country where no mother is lost to what coordinated care could have caught.</p></div>
+    <div class="plat"><span class="k">Mission</span><p>Connect doulas, families and clinicians around one shared, consented birth plan — and fund access for the mothers the system overlooks.</p></div>
+    <div class="plat"><span class="k">Promise</span><p>You will never have to repeat yourself.</p></div>
+    <div class="plat"><span class="k">Positioning</span><p>For mothers and the people who care for them, Doula’s House is the coordinated-care platform that brings the doula into the circle — where patient portals stop at the clinic door.</p></div>
+    <div class="plat"><span class="k">Tagline</span><p>Birthing your story.</p></div>
+  </div>
+
+  <div class="sub"><h3>Three strands, one circle</h3><span>Our audiences — and their colours</span></div>
+  <div class="grid g3">
+    <div class="strand" style="background:#f2d9d0;color:#6e2a17"><i class="sw"></i><b>Family</b><span class="small">The mother and her people. At the centre of every screen, every sentence, every decision. <b style="display:inline">Clay.</b></span></div>
+    <div class="strand" style="background:#f5e4bf;color:#5e4310"><i class="sw"></i><b>Doula</b><span class="small">The continuous presence — the one who connects the mother to the room. <b style="display:inline">Honey.</b></span></div>
+    <div class="strand" style="background:#dbe4ee;color:#2a4260"><i class="sw"></i><b>Clinician</b><span class="small">The medical team that holds the chart and the responsibility. <b style="display:inline">Dawn.</b></span></div>
+  </div>
+
+  <div class="sub"><h3>Four pillars</h3><span>Everything we build serves one of these</span></div>
+  <div class="grid g4">
+    <div class="card card-pad-sm"><span class="numeral" style="font-size:2.4rem">i</span><h4>Coordinated</h4><p class="small muted" style="margin-top:6px">One plan. One team. No repeating yourself.</p></div>
+    <div class="card card-pad-sm"><span class="numeral" style="font-size:2.4rem">ii</span><h4>Continuous</h4><p class="small muted" style="margin-top:6px">Before, during and long after birth.</p></div>
+    <div class="card card-pad-sm"><span class="numeral" style="font-size:2.4rem">iii</span><h4>Consented</h4><p class="small muted" style="margin-top:6px">She decides who sees what — and can see who did.</p></div>
+    <div class="card card-pad-sm"><span class="numeral" style="font-size:2.4rem">iv</span><h4>Equitable</h4><p class="small muted" style="margin-top:6px">Funded access for the mothers the system serves least well.</p></div>
+  </div>
+
+  <div class="sub"><h3>Personality</h3><span>Four traits, each with a limit</span></div>
+  <div class="grid g4">
+    <div class="trait"><h4>Warm</h4><p class="not">…not saccharine. We never gush; we show up.</p></div>
+    <div class="trait"><h4>Assured</h4><p class="not">…not cold. Clinical-grade rigour, spoken like a person.</p></div>
+    <div class="trait"><h4>Unhurried</h4><p class="not">…not passive. Calm is a choice, and it moves things forward.</p></div>
+    <div class="trait"><h4>Fierce for mothers</h4><p class="not">…not aggressive. We advocate, we don’t shout.</p></div>
+  </div>
+</section>
+
+<!-- 02 IDENTITY -->
+<section class="chapter" id="identity">
+  <div class="ch-head"><span class="ch-no">02</span><h2>Identity</h2><p class="lead">A doorway held open, a mother held at its centre, and a lotus rising beneath her — resilience and rebirth, standing on steady ground. No letters to misread: the idea is the mark.</p></div>
+
+  <div class="sub" style="margin-top:0"><h3>The mark</h3><span>The Doorway Bloom</span></div>
+  <div class="callouts">
+    <div class="tile" style="min-height:340px"><div id="anatomy" style="width:min(100%,420px)"></div></div>
+    <ol class="legend">
+      <li><span><b>The heart</b>The mother — kept at the centre of the doorway, safe inside the circle of care.</span></li>
+      <li><span><b>The lotus</b>Rising beneath her: resilience and rebirth. Rooted in mud, it blooms clean every morning — a mother’s strength, and the new beginning birth brings.</span></li>
+      <li><span><b>The doorway</b>The clinical team and the threshold we hold open — a home, a welcome. <i>Welcome home.</i></span></li>
+      <li><span><b>The ground</b>The doula. The steady line under everything — the one who stays, before, during and long after birth.</span></li>
+    </ol>
+  </div>
+
+  <div class="sub"><h3>Construction</h3><span>Grid of 100 × 100 units · stroke 11u</span></div>
+  <div class="grid g2">
+    <div class="tile cream" style="padding:20px"><div id="construction" style="width:100%"></div></div>
+    <div class="stack">
+      <p>The mark is drawn on a 100 × 100 grid with a single 11-unit stroke. The doorway is one half-circle of <b>r = 39.5u</b> springing from a straight run of legs, so it reads as a clean, friendly arch even at 16 pixels. The ground line is 6u — lighter than the doorway, because it supports rather than frames.</p>
+      <p>Everything sits on the vertical axis. The heart is centred at 34u; the lotus is planted 11u above the baseline and rises 38u. The three elements are separated by clear air — never touching — so the mark stays legible at small sizes.</p>
+      <p>The lotus has five petals cut apart by a 2.4u gap. Its gaps are true cut-outs, not paint, so the mark works on any colour or photograph.</p>
+      <p class="muted small">The heart and the lotus are the only elements that take a second colour in the signature version — both Clay, because both belong to the mother.</p>
+    </div>
+  </div>
+
+  <div class="sub"><h3>Why a lotus</h3><span>Resilience & rebirth</span></div>
+  <div class="grid g2" style="align-items:center">
+    <div class="grid g3" style="gap:12px"><div class="tile cream" style="min-height:170px"><div id="lo-clay" style="width:96px;color:var(--clay)"></div></div><div class="tile hearth" style="min-height:170px"><div id="lo-cream" style="width:96px;color:var(--cream)"></div></div><div class="tile" style="min-height:170px"><div id="lo-ink" style="width:96px;color:var(--ink)"></div></div></div>
+    <div class="stack"><p>The lotus grows from mud, rises through dark water and opens clean in the light — and does it again every morning. In many cultures it carries the idea of <b>resilience and rebirth</b>: exactly what mothers show, and what birth gives.</p>
+      <p>Inside the mark, the lotus is planted in the doorway beneath the heart. On its own, the <b>lotus emblem</b> is our small mark: embroidered pockets, patches, stamps, favicons-with-attitude. It never replaces the mark in a lockup, and always keeps its five cut petals.</p></div>
+  </div>
+
+  <div class="sub"><h3>Wordmark & lockups</h3><span>Fraunces 330 · optical size 144 · SOFT 100 · tracking −22</span></div>
+  <div class="grid g2">
+    <div class="tile" style="min-height:240px"><div class="lockup-h" style="font-size:clamp(1.5rem,3vw,2.5rem)" id="lk-h"></div><span class="cap">Primary · horizontal</span></div>
+    <div class="tile" style="min-height:240px"><div class="lockup-s" style="font-size:clamp(2rem,4.5vw,3rem)" id="lk-s"></div><span class="cap">Stacked · for square formats</span></div>
+  </div>
+  <div class="grid g3" style="margin-top:var(--s4)">
+    <div class="tile"><div id="ic-cream" style="width:112px;filter:drop-shadow(0 6px 14px rgba(38,28,23,.18))"></div><span class="cap">App icon · Cream</span></div>
+    <div class="tile"><div id="ic-hearth" style="width:112px;filter:drop-shadow(0 6px 14px rgba(38,28,23,.18))"></div><span class="cap">App icon · Hearth</span></div>
+    <div class="tile"><div id="ic-clay" style="width:112px;filter:drop-shadow(0 6px 14px rgba(38,28,23,.18))"></div><span class="cap">App icon · Clay</span></div>
+  </div>
+  <p class="muted small" style="margin-top:var(--s4);max-width:70ch">The wordmark is always title-case with a typographic apostrophe (Doula’s House) — never all caps, never italic. The mark is sized so its height is roughly 1.7× the cap height of the wordmark, so the doorway reads as a gateway to the name. Tagline “Birthing your story” appears in tracked small caps beneath, only where space allows.</p>
+
+  <div class="sub"><h3>Colourways</h3><span>Signature first</span></div>
+  <div class="grid g3" id="colourways"></div>
+
+  <div class="sub"><h3>Clear space & minimum size</h3><span>X = the width of the heart (24u)</span></div>
+  <div class="grid g2">
+    <div class="tile cream"><div id="clear" style="width:min(100%,360px)"></div></div>
+    <div class="stack">
+      <p>Keep a clear zone of <b>1× the heart width</b> on every side of the mark, and <b>2×</b> around the full lockup. Nothing — type, edges, imagery — enters it.</p>
+      <table class="cmx"><thead><tr><th>Asset</th><th>Digital</th><th>Print</th></tr></thead><tbody><tr><td>Mark</td><td>16 px</td><td>6 mm</td></tr><tr><td>Horizontal lockup</td><td>112 px wide</td><td>28 mm</td></tr><tr><td>Stacked lockup</td><td>96 px wide</td><td>24 mm</td></tr></tbody></table>
+      <div class="row" style="gap:28px;align-items:flex-end"><div id="sz1" style="width:16px;color:var(--umber)"></div><div id="sz2" style="width:32px;color:var(--umber)"></div><div id="sz3" style="width:64px;color:var(--umber)"></div><span class="xs muted">16 · 32 · 64 px</span></div>
+    </div>
+  </div>
+
+  <div class="sub"><h3>Misuse</h3><span>Please don’t</span></div>
+  <div class="grid g4" id="misuse"></div>
+</section>
+
+<!-- 03 COLOUR -->
+<section class="chapter" id="colour">
+  <div class="ch-head"><span class="ch-no">03</span><h2>Colour</h2><p class="lead">A warm, earthy base — studio mocha, linen and hearth — with three strand colours that carry meaning across the whole system.</p></div>
+  <div class="sub" style="margin-top:0"><h3>Primary palette</h3><span>Named like things you’d find in a home</span></div>
+  <div class="grid g3" id="pal-main"></div>
+  <div class="sub"><h3>Supporting</h3><span>Surfaces, depth and states</span></div>
+  <div class="grid g3" id="pal-sup"></div>
+  <div class="sub"><h3>Proportion</h3><span>Warm, calm, and mostly quiet</span></div>
+  <div class="prop" id="prop"></div>
+  <p class="muted small" style="margin-top:12px">Paper and Cream carry most surfaces; Hearth and Umber carry text and depth; Clay, Honey and Dawn are accents — never large flat fills except Clay in campaign moments.</p>
+  <div class="sub"><h3>Colour as meaning</h3><span>The strands</span></div>
+  <div class="row" style="gap:12px" id="strand-chips"></div>
+  <p class="muted small" style="margin-top:12px;max-width:68ch">Wherever the product shows people — avatars, chips, charts, messages — a mother’s colour is Clay, a doula’s is Honey, a clinician’s is Dawn. The spectrum version of the mark is the same idea in a single glyph.</p>
+  <div class="sub"><h3>Accessible pairings</h3><span>WCAG contrast, computed</span></div>
+  <div class="table-wrap"><table class="cmx" id="cmx"></table></div>
+  <p class="muted small" style="margin-top:12px;max-width:70ch">Dawn and Honey are <b>graphic colours</b>: use them for fills, marks and chips with dark text on top — never as text on light surfaces (use Dawn deep or Umber). On Hearth, use the light variants of Clay and Dawn.</p>
+</section>
+
+<!-- 04 TYPE -->
+<section class="chapter" id="type">
+  <div class="ch-head"><span class="ch-no">04</span><h2>Typography</h2><p class="lead">A soft, high-contrast serif for voice. A calm, clear sans for information. A condensed poster face for the protest.</p></div>
+  <div class="grid g2">
+    <div class="tile cream spec-type" style="place-items:start;padding:36px"><span class="eyebrow">Voice · Fraunces</span><div class="big display">Aa<em style="color:var(--clay);font-variation-settings:'SOFT' 100,'WONK' 1">g</em></div><p style="margin:10px 0 0;max-width:34ch">Headlines, pull-quotes, numerals and the wordmark. Weight 330–380, SOFT 100, sentence case. Italic for the one word that matters.</p><p class="display" style="font-size:1.15rem;margin:12px 0 0;letter-spacing:0;word-break:break-all">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br><i>0123456789 &amp; ’ “ ”</i></p></div>
+    <div class="tile spec-type" style="place-items:start;padding:36px"><span class="eyebrow">Clarity · Instrument Sans</span><div class="big" style="font-family:var(--font-sans);font-weight:560;letter-spacing:-.04em">Aa</div><p style="margin:10px 0 0;max-width:34ch">Body, interface, data. Regular 400 for reading, 560 for emphasis, 650 tracked caps for eyebrows and buttons.</p><p style="font-size:1rem;margin:12px 0 0;word-break:break-all">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 .,;:!?&amp;@#%</p></div>
+  </div>
+  <div class="tile hearth spec-type" style="place-items:start;padding:36px;margin-top:var(--s4)"><span class="eyebrow" style="color:var(--camel)">Protest · Antonio Bold</span><div style="font-family:var(--font-slogan);font-size:clamp(2.6rem,8vw,6rem);line-height:.95;letter-spacing:.01em">DOULAS SAVE LIVES.</div><p style="margin:10px 0 0;color:#cbbfae;max-width:60ch">Reserved for slogans on merch, posters and moments of conviction. Always uppercase, always short — never body copy, never UI.</p></div>
+
+  <div class="sub"><h3>Scale</h3><span>Modular, tuned for editorial rhythm</span></div>
+  <div>
+    <div class="scale-row"><span>Display XL</span><span class="display" style="font-size:clamp(2.6rem,6.6vw,5.6rem);line-height:1">Every birth deserves a whole team.</span><code>Fraunces 350 · 90px · −30</code></div>
+    <div class="scale-row"><span>Heading</span><span class="display" style="font-size:clamp(2rem,4.2vw,3.4rem);line-height:1.05">One plan. One team.</span><code>Fraunces 350 · 56px · −25</code></div>
+    <div class="scale-row"><span>Subheading</span><span class="display" style="font-size:1.75rem">A birth plan that travels</span><code>Fraunces 400 · 28px · −15</code></div>
+    <div class="scale-row"><span>Lead</span><span style="font-size:1.25rem;line-height:1.55;color:var(--ink-2)">Doulas have always held mothers through birth.</span><code>Instrument Sans 400 · 20/31</code></div>
+    <div class="scale-row"><span>Body</span><span>A doula is a trained, non-medical professional who gives continuous support before, during and after birth.</span><code>Instrument Sans 400 · 16/26</code></div>
+    <div class="scale-row"><span>Eyebrow</span><span class="eyebrow">Birthing your story</span><code>Instrument Sans 650 · 11.5px · +260</code></div>
+    <div class="scale-row"><span>Caption</span><span class="small muted">Sample caption set in a calm grey.</span><code>Instrument Sans 400 · 13/20</code></div>
+  </div>
+  <div class="dd" style="margin-top:var(--s6)"><div class="do"><h4>Do</h4><ul><li>Set headlines in sentence case</li><li>Italicise one word per headline for warmth</li><li>Keep line length to 60–70 characters</li><li>Use Fraunces numerals for stats</li></ul></div><div class="dont"><h4>Don’t</h4><ul><li>Set headlines in all caps</li><li>Use Fraunces for UI labels or tables</li><li>Use Antonio for anything longer than a slogan</li><li>Mix more than two italic words in a line</li></ul></div></div>
+</section>
+
+<!-- 05 GRAPHIC LANGUAGE -->
+<section class="chapter" id="language">
+  <div class="ch-head"><span class="ch-no">05</span><h2>Graphic language</h2><p class="lead">A few simple devices, repeated with discipline. Each one comes from the mark.</p></div>
+
+  <div class="grid g3">
+    <div class="arch-stack"><div class="arch-demo" id="arch-demo"><img src="assets/portrait-profile.jpg" alt="Portrait of a pregnant woman in an arch frame" loading="lazy"></div><div class="arch-note"><b>The arch frame.</b> Portraits live in arches — the doorway, made visible. One per layout.</div><button class="btn btn-ghost btn-xs" id="replay">Replay reveal</button></div>
+    <div class="arch-stack"><div class="tile hearth" style="width:100%;aspect-ratio:3/4;overflow:hidden;padding:0"><div class="orn orn-tr gold" style="width:70%;opacity:1"></div><div class="orn orn-bl gold" style="width:50%"></div></div><div class="arch-note"><b>Threshold arcs.</b> Three strokes of graded weight (2 · 3.5 · 5) radiating from a corner or edge. Always cropped, never complete.</div></div>
+    <div class="arch-stack"><div class="tile cream" style="width:100%;aspect-ratio:3/4;display:grid;align-content:center;gap:28px;justify-items:start;padding:36px"><span class="rule3" style="width:120px;height:18px;background-size:100% 3px,100% 5px,100% 7px;background-position:0 0,0 7px,0 15px"></span><span class="rule3" style="color:var(--clay)"></span><span class="rule3" style="color:var(--dawn-deep);width:90px"></span></div><div class="arch-note"><b>The triple rule.</b> The divider: three lines, 1.5 · 2.5 · 3.5 — the same weights as the arcs.</div></div>
+  </div>
+
+  <div class="sub"><h3>Layout, space & shape</h3><span>8px base · 12 columns</span></div>
+  <div class="grid g2">
+    <div class="tile" style="padding:0;overflow:hidden;min-height:220px;display:block"><div id="gridviz" style="height:220px;display:grid;grid-template-columns:repeat(12,1fr);gap:12px;padding:0 20px"></div></div>
+    <div class="stack"><p>Content sits on a 12-column grid inside a 1200px container, with 20–40px gutters. Space is built in an 8px rhythm (4 · 8 · 12 · 16 · 24 · 32 · 48 · 72 · 112). Generous section padding is part of the voice: <i>unhurried</i>.</p>
+    <div class="row" style="gap:14px;align-items:flex-end"><div style="width:56px;height:56px;border-radius:8px;background:var(--sand)"></div><div style="width:56px;height:56px;border-radius:18px;background:var(--sand)"></div><div style="width:56px;height:56px;border-radius:28px;background:var(--sand)"></div><div style="width:56px;height:56px;border-radius:999px;background:var(--sand)"></div><div style="width:56px;height:56px;border-radius:999px 999px 10px 10px;background:var(--sand)"></div></div><span class="xs muted">8 · 18 · 28 · pill · arch — pills for actions, arches for people.</span></div>
+  </div>
+
+  <div class="sub"><h3>Iconography</h3><span>1.7px stroke · 24px grid · round caps</span></div>
+  <div class="icon-grid" id="icons"></div>
+
+  <div class="sub"><h3>Motion</h3><span>Calm, rising, never bouncy</span></div>
+  <p style="max-width:68ch">Things arrive the way a door opens: they rise and settle. Standard easing is <code class="tok">cubic-bezier(.2, .7, .2, 1)</code>, duration 600–1100ms for reveals and 180ms for interactions. The arch reveal above is the signature motion; all animation is removed under <code class="tok">prefers-reduced-motion</code>.</p>
+</section>
+
+<!-- 06 IMAGERY -->
+<section class="chapter" id="imagery">
+  <div class="ch-head"><span class="ch-no">06</span><h2>Imagery</h2><p class="lead">Dignified, direct, warm. Mothers are never props; they are the point of view.</p></div>
+  <div class="grid g3">
+    <div class="arch-stack"><div class="arch-demo"><img src="assets/portrait-front.jpg" alt="Direct-gaze portrait" loading="lazy"></div><div class="arch-note"><b>Direct gaze.</b> She looks at us as an equal.</div></div>
+    <div class="arch-stack"><div class="arch-demo"><img src="assets/portrait-profile.jpg" alt="Profile portrait in warm studio light" loading="lazy"></div><div class="arch-note"><b>Warm studio light.</b> Soft, directional, never clinical white.</div></div>
+    <div class="stack"><div class="dd" style="grid-template-columns:1fr"><div class="do"><h4>Do</h4><ul><li>Real mothers, doulas and clinicians, photographed with consent</li><li>Black and brown mothers at the centre — not the margin</li><li>Warm, lifted shadows; mocha, camel and cream backdrops</li><li>Crop into the arch; keep the chin and hands</li></ul></div><div class="dont"><h4>Don’t</h4><ul><li>Stock-photo clichés: stethoscopes on bellies, sunsets, hearts-in-hands</li><li>Faceless torsos as a default</li><li>Cold blue-white hospital lighting</li><li>Filters that flatten skin tone</li></ul></div></div></div>
+  </div>
+</section>
+
+<!-- 07 VOICE -->
+<section class="chapter" id="voice">
+  <div class="ch-head"><span class="ch-no">07</span><h2>Voice</h2><p class="lead">We talk like the best doula you know: calm, specific, on your side.</p></div>
+  <div class="grid g3">
+    <div class="card card-cream"><h4>Plain.</h4><p class="small" style="margin-top:6px">Short sentences. Everyday words. Say it the way you’d say it across a kitchen table.</p></div>
+    <div class="card card-cream"><h4>Specific.</h4><p class="small" style="margin-top:6px">“Dr. Okafor can see 6 of 10 sections.” Not “enhanced visibility.”</p></div>
+    <div class="card card-cream"><h4>On her side.</h4><p class="small" style="margin-top:6px">Mothers decide. We explain, we ask, we never lecture or scare.</p></div>
+  </div>
+  <div class="sub"><h3>Before & after</h3><span>How the voice changes the words</span></div>
+  <div class="table-wrap" style="background:#fff"><div id="voice"></div></div>
+  <div class="sub"><h3>Tone shifts with context</h3><span>Never the brand — only the volume</span></div>
+  <div class="table-wrap"><table class="cmx"><thead><tr><th>Context</th><th>Tone</th><th>Example</th></tr></thead><tbody>
+    <tr><td>Marketing</td><td>Warm, confident, a little poetic</td><td class="display" style="font-size:1.15rem">Every birth deserves a whole team.</td></tr>
+    <tr><td>Product</td><td>Plain, brief, kind</td><td>Imani can now see “Pain relief preferences.”</td></tr>
+    <tr><td>Clinical</td><td>Precise, respectful, jargon only for clinicians</td><td>Plan acknowledged. Amara and Imani were notified.</td></tr>
+    <tr><td>Urgent</td><td>Calm, direct, imperative — no flourish</td><td><b>Call 911 or your provider now.</b></td></tr>
+  </tbody></table></div>
+  <div class="sub"><h3>Words we use — and don’t</h3><span>Vocabulary</span></div>
+  <div class="dd"><div class="do"><h4>We say</h4><ul><li>mother (or “mom” when she does)</li><li>birth plan · care team · circle</li><li>doula-aligned</li><li>shared with you · consent</li><li>postpartum · the fourth trimester</li></ul></div><div class="dont"><h4>We avoid</h4><ul><li>patient (to her), compliance, non-compliant</li><li>high-risk (say what the risk is)</li><li>journey, empower, disrupt, stakeholder</li><li>delivery (for the plan)</li><li>“just”, “simply”, “obviously”</li></ul></div></div>
+  <div class="sub"><h3>Lines</h3><span>Hierarchy of taglines</span></div>
+  <div class="table-wrap"><table class="cmx"><tbody>
+    <tr><th style="width:190px">Brand line</th><td class="display" style="font-size:1.5rem">Birthing your story.</td></tr>
+    <tr><th>Descriptor</th><td>Coordinated care for every mother.</td></tr>
+    <tr><th>Campaign</th><td class="display" style="font-size:1.5rem">One circle around every mother.</td></tr>
+    <tr><th>Protest (merch)</th><td style="font-family:var(--font-slogan);font-size:1.6rem">DOULAS SAVE LIVES.</td></tr>
+    <tr><th>Welcome</th><td class="display" style="font-size:1.5rem">Welcome home.</td></tr>
+  </tbody></table></div>
+  <div class="sub"><h3>Boilerplate · 50 words</h3><span>For press and partners</span></div>
+  <blockquote style="margin:0;padding:24px 28px;border-left:3px solid var(--clay);background:var(--cream);border-radius:0 var(--r-md) var(--r-md) 0;max-width:72ch">Doula’s House connects doulas, families and clinicians around one shared, consented birth plan. We help doulas get paid by insurance, give mothers a single place to coordinate their care team, and fund doula and postpartum support through scholarships. Every mother deserves a circle of care that works as one.</blockquote>
+</section>
+
+<!-- 08 APPLICATIONS -->
+<section class="chapter" id="applications">
+  <div class="ch-head"><span class="ch-no">08</span><h2>Applications</h2><p class="lead">The system, working. Same mark, same devices, different jobs.</p></div>
+  <div class="sub" style="margin-top:0"><h3>Merchandise</h3><span>Lotus pocket · mark · wordmark · protest</span></div>
+  <div class="grid g4" id="merch"></div>
+
+  <div class="sub"><h3>Social</h3><span>Story · post</span></div>
+  <div class="grid g3" style="align-items:center">
+    <div class="story-mock"><div class="row-between"><span class="eyebrow" style="font-size:.6rem">Birthing your story</span><span id="sm-mark" style="width:28px;color:var(--umber)"></span></div><div class="arch"><img src="assets/portrait-front.jpg" alt="" loading="lazy"></div><div><div class="display" style="font-size:2rem;line-height:1">Welcome <em style="color:var(--clay)">home.</em></div><div class="xs" style="margin-top:8px;letter-spacing:.18em;text-transform:uppercase;font-weight:650">@doulashouse</div></div></div>
+    <div class="post-mock"><span id="pm-mark" style="width:44px;color:var(--cream);--mark-heart:var(--ink)"></span><blockquote>“When I said something felt wrong at 3 a.m., nobody had to guess what I wanted.”</blockquote><div class="xs" style="letter-spacing:.18em;text-transform:uppercase;font-weight:650">Maya · Mom of two</div></div>
+    <div class="stack" style="justify-self:center;max-width:300px"><p class="small muted">Stories use an arch-framed portrait on Cream; quote posts use flat Clay with the reversed mark. Always one idea, one line of type, one mark.</p></div>
+  </div>
+
+  <div class="sub"><h3>Stationery</h3><span>Business card</span></div>
+  <div class="grid g2" style="align-items:center">
+    <div class="bcard front"><span id="bc-mark" style="width:44px;color:var(--cream);--mark-heart:var(--camel)"></span><div><div class="display" style="font-size:1.5rem;letter-spacing:-.02em">Imani Brooks</div><div class="xs" style="letter-spacing:.2em;text-transform:uppercase;opacity:.7;margin-top:4px">Birth &amp; postpartum doula</div></div></div>
+    <div class="bcard back"><div class="lockup-h" style="font-size:1.4rem" id="bc-lock"></div><div style="display:grid;gap:2px"><span>imani@doulashouse.com</span><span>doulashouse.com</span><span style="margin-top:6px;letter-spacing:.2em;text-transform:uppercase;font-weight:650;font-size:.6rem;color:var(--clay)">Birthing your story</span></div></div>
+  </div>
+
+  <div class="sub"><h3>The doula-aligned seal</h3><span>An endorsement for practices and hospitals</span></div>
+  <div class="grid g3" style="align-items:center">
+    <div class="tile cream"><div id="seal-cream" style="width:190px"></div></div>
+    <div class="tile hearth"><div id="seal-hearth" style="width:190px"></div></div>
+    <div class="stack"><p class="small">Practices that meet the five doula-aligned commitments display the seal at the front desk, on their website and in their listings. It is the only place the mark appears inside a ring of type.</p><p class="small muted">Window cling · reception sign · email footer · directory badge.</p></div>
+  </div>
+</section>
+
+<!-- 09 ARCHITECTURE -->
+<section class="chapter" id="architecture">
+  <div class="ch-head"><span class="ch-no">09</span><h2>Architecture</h2><p class="lead">One house, many rooms. A single master brand with plain-spoken, endorsed lines.</p></div>
+  <div class="arch-diagram">
+    <div class="master"><div class="lockup-h" style="font-size:2.2rem;color:var(--cream)" id="ar-lock"></div><span class="eyebrow" style="color:var(--camel)">Master brand</span></div>
+    <div class="lines">
+      <div class="line"><span class="nm">Doula’s House <b style="color:var(--clay)">Care</b><small>The platform</small></span><p>Birth plan, care team, messages, billing. The product behind sign-in.</p></div>
+      <div class="line"><span class="nm">Doula’s House <b style="color:var(--gold)">Fund</b><small>Scholarships & giving</small></span><p>Doula support, night-nurse care, baby prep and doula training.</p></div>
+      <div class="line"><span class="nm">Doula’s House <b style="color:var(--dawn-deep)">Shop</b><small>Merchandise</small></span><p>Wear it, gift it, fund it. Every order feeds the Fund.</p></div>
+      <div class="line"><span class="nm">Doula’s House <b style="color:var(--umber)">Circle</b><small>Community & stories</small></span><p>Stories, the doula network and doula-aligned practices.</p></div>
+    </div>
+  </div>
+  <div class="dd" style="margin-top:var(--s6)"><div class="do"><h4>Naming rules</h4><ul><li>Always “Doula’s House” + one plain word</li><li>The line word takes an accent colour; the wordmark never changes</li><li>Endorsed, not independent: the master lockup always appears</li></ul></div><div class="dont"><h4>Avoid</h4><ul><li>Invented sub-brand names or new marks per line</li><li>Acronyms (DHC, DHF) in public copy</li><li>Using “Doula-aligned” as a product — it’s a seal</li></ul></div></div>
+</section>
+
+<!-- 10 ASSETS -->
+<section class="chapter" id="assets">
+  <div class="ch-head"><span class="ch-no">10</span><h2>Assets</h2><p class="lead">Everything needed to build on the identity. Vector, ready to use.</p></div>
+  <div id="downloads"></div>
+  <p class="muted small" style="margin-top:12px">Lockups use live text set in Fraunces and Instrument Sans — install the fonts (free on Google Fonts) or convert text to outlines before sending to print.</p>
+  <div class="sub"><h3>Design tokens</h3><span>css/styles.css</span></div>
+<pre class="code">:root {
+  --ink: #1d1612;      --mocha-3: #261c17;  /* Hearth */
+  --umber: #5a3a1e;    --clay: #aa4f36;     /* the mother */
+  --camel: #d1a04f;    /* Honey — the doula */
+  --sky: #7c95b1;      /* Dawn — the clinician */
+  --cream: #f6efe4;    --paper: #fffdf9;    --sand: #eadfcb;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Instrument Sans", system-ui, sans-serif;
+  --font-slogan: "Antonio", Impact, sans-serif;
+}</pre>
+</section>
+
+  </div>
+</div>
+</main>
+<div id="site-footer"></div>
+<script src="js/site.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/merch.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const $ = (s) => document.querySelector(s);
+  const C = { ink: '#1d1612', hearth: '#261c17', umber: '#5a3a1e', clay: '#aa4f36', honey: '#d1a04f', dawn: '#7c95b1', cream: '#f6efe4', paper: '#fffdf9', sand: '#eadfcb', mocha: '#675a4e', dawnDeep: '#3b5675', terracotta: '#8f402b' };
+  const mk = (o, cls) => DH.mark(cls || '', o);
+
+  // lotus emblems
+  $('#lo-clay').innerHTML = DH.lotus('', { color: 'currentColor' }); $('#lo-cream').innerHTML = DH.lotus('', { color: 'currentColor' }); $('#lo-ink').innerHTML = DH.lotus('', { color: 'currentColor' });
+  // cover + lockups
+  $('#cover-mark').innerHTML = mk({ variant: 'spectrum', heart: '#d9694a', ground: '#e0b45f', arch: '#9bb2cc' });
+  const wm = "Doula’s House";
+  const lockH = (o) => mk(o, '') + `<span>${wm}</span>`;
+  $('#lk-h').innerHTML = lockH({ main: C.umber, heart: C.clay });
+  $('#lk-s').innerHTML = mk({ main: C.umber, heart: C.clay }) + `<span>${wm}</span><small>Birthing your story</small>`;
+  $('#bc-lock').innerHTML = lockH({ main: C.umber, heart: C.clay });
+  $('#ar-lock').innerHTML = lockH({ main: C.cream, heart: C.camel });
+  ['#sm-mark', '#pm-mark', '#bc-mark'].forEach((id) => { $(id).innerHTML = mk({ main: 'currentColor' }); });
+  $('#sm-mark').innerHTML = mk({}); $('#pm-mark').innerHTML = mk({ main: C.cream, heart: C.ink }); $('#bc-mark').innerHTML = mk({ main: C.cream, heart: C.honey });
+
+  // app icons (mark scaled in rounded tile)
+  const tile = (bg, main, heart) => `<svg viewBox="0 0 128 128" width="100%"><rect width="128" height="128" rx="26" fill="${bg}"/><g transform="translate(34 34) scale(.6)">${mk({ main, heart }).replace(/<svg[^>]*>|<\/svg>/g, '')}</g></svg>`;
+  $('#ic-cream').innerHTML = tile(C.cream, C.umber, C.clay); $('#ic-hearth').innerHTML = tile(C.hearth, C.cream, '#d9694a'); $('#ic-clay').innerHTML = tile(C.clay, C.cream, C.ink);
+
+  // anatomy: numbered markers with leader lines
+  const mkr = [['1', -16, 28, 40, 34], ['2', 116, 76, 62, 76], ['3', 50, -15, 50, 0], ['4', 116, 112, 94, 98]];
+  $('#anatomy').innerHTML = `<svg viewBox="-30 -26 160 156" width="100%" fill="none"><g>${mk({ main: C.umber, heart: C.clay }).replace(/<svg[^>]*>|<\/svg>/g, '')}</g>
+    ${mkr.map(([n, x, y, tx, ty]) => `<line x1="${x}" y1="${y}" x2="${tx}" y2="${ty}" stroke="${C.ink}" stroke-width=".8"/><circle cx="${x}" cy="${y}" r="7" fill="${C.ink}"/><text x="${x}" y="${y + 3}" text-anchor="middle" fill="${C.cream}" font-size="8" font-weight="700" font-family="Instrument Sans">${n}</text><circle cx="${tx}" cy="${ty}" r="1.6" fill="${C.ink}"/>`).join('')}</svg>`;
+
+  // construction
+  const g = [[0, 'crown'], [46, 'arch springs'], [89, 'lotus base'], [100, 'baseline']];
+  $('#construction').innerHTML = `<svg viewBox="-34 -14 168 132" width="100%" fill="none" font-family="Instrument Sans" font-size="4.2">
+    ${g.map(([y, l]) => `<line x1="-6" x2="106" y1="${y}" y2="${y}" stroke="${C.clay}" stroke-width=".35" stroke-dasharray="1.5 1.5"/><text x="-8" y="${y + 1.4}" text-anchor="end" fill="${C.clay}">${l}</text>`).join('')}
+    ${[0, 10.5, 50, 89.5, 100].map((x) => `<line y1="-6" y2="106" x1="${x}" x2="${x}" stroke="${C.dawnDeep}" stroke-width=".3" stroke-dasharray="1.5 1.5"/>`).join('')}
+    <g opacity=".95">${mk({ main: C.umber, heart: C.clay }).replace(/<svg[^>]*>|<\/svg>/g, '')}</g>
+    <circle cx="50" cy="46" r="39.5" stroke="${C.cream}" stroke-width=".6"/><circle cx="50" cy="46" r="1" fill="${C.cream}"/>
+    <text x="10.5" y="110" text-anchor="middle" fill="${C.dawnDeep}">10.5</text><text x="50" y="110" text-anchor="middle" fill="${C.dawnDeep}">50</text><text x="89.5" y="110" text-anchor="middle" fill="${C.dawnDeep}">89.5</text>
+    <text x="50" y="-8" text-anchor="middle" fill="${C.ink}" font-weight="600">r 39.5 · t 11</text></svg>`;
+
+  // colourways
+  const cw = [
+    ['Signature', 'cream', { main: C.umber, heart: C.clay }, 'Preferred. Umber with a Clay heart.'],
+    ['Spectrum', '', { variant: 'spectrum', heart: C.clay, ground: C.honey, arch: C.dawn }, 'Family · doula · clinician. Brand moments.'],
+    ['Mono ink', 'sand', { main: C.ink }, 'One-colour print, stamps, engraving.'],
+    ['Reversed', 'hearth', { main: C.cream, heart: '#d9694a' }, 'On Hearth or deep photography.'],
+    ['Reversed spectrum', 'hearth', { variant: 'spectrum', heart: '#d9694a', ground: '#e0b45f', arch: '#9bb2cc' }, 'Dark moments, covers.'],
+    ['On Clay', 'clay', { main: C.cream, heart: C.ink }, 'Campaign and merch.']
+  ];
+  $('#colourways').innerHTML = cw.map(([n, t, o, d]) => `<div class="tile ${t}" style="min-height:230px;gap:12px"><div style="width:96px">${mk(o)}</div><span class="cap" style="left:16px;bottom:34px">${n}</span><span class="cap" style="text-transform:none;letter-spacing:0;font-weight:500;bottom:12px">${d}</span><span class="ok">✓</span></div>`).join('');
+
+  // clear space
+  $('#clear').innerHTML = `<svg viewBox="-34 -34 168 168" width="100%" fill="none"><rect x="-24" y="-24" width="148" height="148" fill="none" stroke="${C.clay}" stroke-width=".8" stroke-dasharray="3 2"/>
+    ${mk({ main: C.umber, heart: C.clay }).replace(/<svg[^>]*>|<\/svg>/g, '')}
+    <g stroke="${C.clay}" stroke-width=".6"><line x1="-24" x2="0" y1="50" y2="50"/><line x1="100" x2="124" y1="50" y2="50"/><line x1="50" x2="50" y1="-24" y2="0"/><line x1="50" x2="50" y1="100" y2="124"/></g>
+    <g fill="${C.clay}" font-family="Instrument Sans" font-size="7" font-weight="700" text-anchor="middle"><text x="-12" y="46">x</text><text x="112" y="46">x</text><text x="58" y="-10">x</text><text x="58" y="116">x</text></g></svg>`;
+  ['#sz1', '#sz2', '#sz3'].forEach((id) => { $(id).innerHTML = mk({}); });
+
+  // misuse
+  const bad = [
+    ['Don’t stretch', 'transform:scaleX(1.5)', {}, 'cream'], ['Don’t rotate', 'transform:rotate(-18deg)', {}, 'cream'],
+    ['Don’t recolour off-palette', '', { main: '#7a3fb0', heart: '#2fb36f' }, 'cream'], ['Don’t outline', 'filter:none', { outline: true }, 'cream'],
+    ['Don’t add effects', 'filter:drop-shadow(5px 6px 4px rgba(0,0,0,.55))', {}, 'cream'], ['Don’t swap the strands', '', { variant: 'spectrum', heart: C.dawn, ground: C.clay, arch: C.honey }, 'cream'],
+    ['Don’t place on busy imagery', '', { main: C.umber, heart: C.clay }, 'photo'], ['Don’t crowd the clear space', '', {}, 'crowd']
+  ];
+  $('#misuse').innerHTML = bad.map(([n, st, o, bg]) => {
+    let inner = o.outline ? mk({ main: 'none' }).replace('<svg ', '<svg style="overflow:visible" ').replace(/stroke="none"/g, `stroke="${C.umber}" stroke-width="2"`) : mk(o);
+    if (o.outline) inner = `<svg viewBox="0 0 100 100" fill="none"><path d="M5 100V46A44.5 44.5 0 0 1 95 46V100M16 100V46A33.5 33.5 0 0 1 84 46V100" stroke="${C.umber}" stroke-width="2"/></svg>`;
+    const style = bg === 'photo' ? 'background:url(assets/portrait-front.jpg) center/cover' : '';
+    return `<div class="tile cream" style="min-height:190px;padding:20px;${style}"><div style="width:84px;${st}">${inner}</div>${bg === 'crowd' ? '<div style="position:absolute;inset:auto 18px 40px 18px;font-weight:700;font-size:1.1rem;text-align:center;transform:translateY(-28px)">HEADLINE HEADLINE</div>' : ''}<span class="x">✕</span><span class="cap" style="${bg === 'photo' ? 'background:#fffdf9;color:#1d1612;padding:3px 10px;border-radius:99px;opacity:1' : ''}">${n}</span></div>`;
+  }).join('');
+
+  // palette
+  const lum = (h) => { const c = [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255).map((v) => (v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4))); return .2126 * c[0] + .7152 * c[1] + .0722 * c[2]; };
+  const cr = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); };
+  const rgb = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16)).join(', ');
+  const sw = (n, h, role, light) => `<div class="swatch-card"><div class="c" style="background:${h};color:${light ? C.ink : C.cream};${h === C.paper ? 'border-bottom:1px solid var(--line-soft)' : ''}">${n}</div><div class="d"><b>${n}</b><span>${role}</span><code>${h.toUpperCase()} · RGB ${rgb(h)}</code></div></div>`;
+  $('#pal-main').innerHTML = [['Hearth', C.hearth, 'Deep backgrounds, footer, text on light', 0], ['Clay', C.clay, 'The mother · the heart · campaign fills', 0], ['Honey', C.honey, 'The doula · highlights on dark', 1], ['Dawn', C.dawn, 'The clinician · calm contrast', 1], ['Umber', C.umber, 'The mark · gold-toned text', 0], ['Cream', C.cream, 'Soft surfaces, the app canvas', 1]].map((a) => sw(...a)).join('');
+  $('#pal-sup').innerHTML = [['Paper', C.paper, 'Page background', 1], ['Sand', C.sand, 'Dividers, tracks, rest states', 1], ['Mocha', C.mocha, 'Studio backdrop, dark sections', 0], ['Dawn deep', C.dawnDeep, 'Clinician text on light', 0], ['Clay light', '#d9694a', 'Clay on dark backgrounds', 0], ['Dawn light', '#9bb2cc', 'Dawn on dark backgrounds', 1]].map((a) => sw(...a)).join('');
+  $('#prop').innerHTML = [[C.paper, 34, C.ink, 'Paper'], [C.cream, 22, C.ink, 'Cream'], [C.hearth, 20, C.cream, 'Hearth · Umber'], [C.clay, 12, C.cream, 'Clay'], [C.honey, 7, C.ink, 'Honey'], [C.dawn, 5, C.ink, '']].map(([bg, w, fg, l]) => `<span style="flex:${w};background:${bg};color:${fg}">${l}</span>`).join('');
+  $('#strand-chips').innerHTML = [['Mother', '#f2d9d0', '#6e2a17', C.clay], ['Doula', '#f5e4bf', '#5e4310', C.honey], ['Clinician', '#dbe4ee', '#2a4260', C.dawn]].map(([n, bg, fg, dot]) => `<span class="chip" style="background:${bg};color:${fg};border:0;height:36px;padding:0 16px 0 10px;font-size:.84rem"><i style="width:14px;height:14px;border-radius:50%;background:${dot};display:inline-block"></i>${n}</span>`).join('') + `<span style="width:56px">${mk({ variant: 'spectrum', heart: C.clay, ground: C.honey, arch: C.dawn })}</span>`;
+
+  const pairs = [['Ink', C.ink, 'Paper', C.paper], ['Ink', C.ink, 'Cream', C.cream], ['Cream', C.cream, 'Hearth', C.hearth], ['Cream', C.cream, 'Clay', C.clay], ['Clay', C.clay, 'Cream', C.cream], ['Umber', C.umber, 'Cream', C.cream], ['Dawn deep', C.dawnDeep, 'Cream', C.cream], ['Ink', C.ink, 'Honey', C.honey], ['Honey', C.honey, 'Hearth', C.hearth], ['Ink', C.ink, 'Dawn', C.dawn], ['Clay light', '#d9694a', 'Hearth', C.hearth], ['Dawn light', '#9bb2cc', 'Hearth', C.hearth], ['Dawn', C.dawn, 'Cream', C.cream]];
+  $('#cmx').innerHTML = '<thead><tr><th>Sample</th><th>Foreground on background</th><th>Ratio</th><th>Normal text</th><th>Large text</th></tr></thead><tbody>' + pairs.map(([fn, f, bn, b]) => { const r = cr(f, b); const badge = (ok, t) => `<span class="chip ${ok ? 'ok' : 'bad'}" style="height:24px">${t}</span>`; return `<tr><td><span class="sample" style="background:${b};color:${f}">Aa</span></td><td>${fn} on ${bn}</td><td class="tabular"><b>${r.toFixed(2)}</b> : 1</td><td>${badge(r >= 4.5, r >= 7 ? 'AAA' : r >= 4.5 ? 'AA' : 'Fail')}</td><td>${badge(r >= 3, r >= 4.5 ? 'AAA' : r >= 3 ? 'AA' : 'Fail')}</td></tr>`; }).join('') + '</tbody>';
+
+  // gridviz
+  $('#gridviz').innerHTML = Array.from({ length: 12 }, () => `<div style="background:rgba(170,79,54,.14);border-left:1px solid rgba(170,79,54,.4);border-right:1px solid rgba(170,79,54,.4)"></div>`).join('');
+
+  // icons
+  const iconNames = ['heart', 'users', 'file', 'lock', 'shield', 'calendar', 'message', 'dollar', 'history', 'key', 'moon', 'grad'];
+  $('#icons').innerHTML = iconNames.map((n) => `<div class="icon-cell" title="${n}">${DH.icon(n)}</div>`).join('');
+
+  // arch replay
+  $('#replay').addEventListener('click', () => { const a = $('#arch-demo'); a.classList.remove('play'); void a.offsetWidth; a.classList.add('play'); });
+
+  // voice
+  $('#voice').innerHTML = [
+    ['Leverage our platform to optimize maternal outcomes.', 'Everyone on your team sees the same plan.'],
+    ['Patients must comply with the prescribed care protocol.', 'You decide what happens. We make sure the room knows.'],
+    ['Stakeholder alignment workflow enabled.', 'A shared plan, section by section.'],
+    ['We’re disrupting maternal healthcare.', 'Doulas have always held mothers. Now they’re in the room.'],
+    ['Error 403: insufficient permissions.', 'This section isn’t shared with you. Ask Amara if she’d like to.']
+  ].map(([b, a]) => `<div class="voice-row"><div class="before">${b}</div><div class="after">${a}</div></div>`).join('');
+
+  // merch — each piece follows a reference construction, in the brand palette
+  const showcase = [['lotus-bodysuit', 'cream'], ['half-zip', 'clay'], ['wrap-tee', 'hearth'], ['tote-slogan', 'dawn']];
+  $('#merch').innerHTML = showcase.map(([id, c]) => { const p = DH.PRODUCTS.find((x) => x.id === id); return `<div class="product"><div class="product-art">${DH.productArt(p, c)}</div><div class="product-meta"><h3>${p.name}</h3><span class="xs muted" style="text-transform:capitalize">${c}</span></div></div>`; }).join('') +
+    `<div class="product" style="grid-column:1/-1"><div class="product-art" style="aspect-ratio:2.2/1">${DH.productArt(DH.PRODUCTS.find((x) => x.id === 'first-five'), '')}</div><div class="product-meta"><h3>First Five Bodysuit Set</h3><span class="xs muted">Lotus print · heart print · three lotus-pocket colours</span></div></div>`;
+
+  // seals
+  const seal = (fg, bg, heart) => `<svg viewBox="0 0 200 200" width="100%"><defs><path id="sp${bg.slice(1)}" d="M100 100m-78 0a78 78 0 1 1 156 0a78 78 0 1 1-156 0"/></defs>
+    <circle cx="100" cy="100" r="96" fill="${bg}"/><circle cx="100" cy="100" r="92" fill="none" stroke="${fg}" stroke-width="1.2"/><circle cx="100" cy="100" r="58" fill="none" stroke="${fg}" stroke-width="1.2" opacity=".7"/>
+    <text font-family="Instrument Sans" font-weight="650" font-size="11.5" letter-spacing="4.1" fill="${fg}"><textPath href="#sp${bg.slice(1)}" startOffset="0" textLength="482" lengthAdjust="spacing">DOULA-ALIGNED PRACTICE · BIRTHING YOUR STORY · </textPath></text>
+    <g transform="translate(${100 - 57 * .5} ${100 - 50 * .5}) scale(.5)">${mk({ main: fg, heart }).replace(/<svg[^>]*>|<\/svg>/g, '')}</g></svg>`;
+  $('#seal-cream').innerHTML = seal(C.umber, C.cream, C.clay); $('#seal-hearth').innerHTML = seal(C.cream, C.hearth, '#d9694a');
+
+  // downloads
+  const files = [['mark-signature.svg', 'Mark · Signature'], ['mark-spectrum.svg', 'Mark · Spectrum'], ['mark-mono-ink.svg', 'Mark · Mono ink'], ['mark-reversed.svg', 'Mark · Reversed'], ['mark-reversed-spectrum.svg', 'Mark · Reversed spectrum'], ['lotus-clay.svg', 'Lotus emblem · Clay'], ['lotus-mono-ink.svg', 'Lotus emblem · Mono ink'], ['lotus-cream.svg', 'Lotus emblem · Cream on Hearth'], ['lockup-horizontal.svg', 'Lockup · Horizontal'], ['lockup-stacked.svg', 'Lockup · Stacked'], ['app-icon-cream.svg', 'App icon · Cream'], ['app-icon-hearth.svg', 'App icon · Hearth'], ['app-icon-clay.svg', 'App icon · Clay']];
+  $('#downloads').innerHTML = files.map(([f, n]) => `<div class="dl"><div class="pv"><img src="assets/brand/${f}" alt=""></div><div><b>${n}</b><div class="xs muted">${f}</div></div><a class="btn btn-ghost btn-xs" href="assets/brand/${f}" download>Download SVG</a></div>`).join('');
+
+  // chapter nav highlight
+  const links = [...document.querySelectorAll('#bk-nav a')], secs = links.map((a) => document.querySelector(a.getAttribute('href')));
+  const onScroll = () => { let cur = 0; secs.forEach((s, i) => { if (s.getBoundingClientRect().top < 160) cur = i; }); links.forEach((a, i) => a.classList.toggle('on', i === cur)); };
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+});
+</script>
+</body>
+</html>

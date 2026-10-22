@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shop &amp; Give — Doula's House</title>
+<meta name="description" content="Wear the message, fund the work. Net proceeds from the Doula's House store fund scholarships for moms and aspiring doulas.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .shop-hero { text-align: center; color: var(--cream); }
+  .shop-hero h1 { font-size: clamp(4rem, 14vw, 10rem); margin: var(--s4) 0; }
+  .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: var(--s7); }
+  .track-card { display: flex; flex-direction: column; gap: 12px; }
+  .track-card .chip { align-self: flex-start; }
+  .impact { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s5); margin-top: var(--s6); }
+  .impact b { display: block; font-family: var(--font-display); font-size: 2.4rem; line-height: 1; color: var(--camel); }
+  .impact span { font-size: .84rem; color: #cbbfae; }
+  @media (max-width: 620px) { .impact { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body data-page="shop">
+<div id="site-header"></div>
+<main id="main">
+
+<section class="page-hero bg-mocha shop-hero">
+  <div class="orn orn-wave"></div><div class="orn orn-tr gold" style="opacity:.55"></div>
+  <div class="container">
+    <span class="eyebrow">Birthing your story</span>
+    <h1>Shop</h1>
+    <p class="lead" style="margin-inline:auto">Wear the message. Every order helps fund doula support, postpartum night nurses and training for the next generation of doulas.</p>
+    <div class="row" style="justify-content:center;margin-top:var(--s6)"><a class="btn btn-light" href="#store">Shop the collection</a><a class="btn btn-ghost-light" href="#scholarships">Apply for a scholarship</a></div>
+  </div>
+</section>
+
+<section class="section-tight bg-mocha-deep">
+  <div class="container split" style="grid-template-columns:1.2fr 1fr">
+    <div>
+      <span class="eyebrow" style="color:var(--camel)">The scholarship fund · sample figures</span>
+      <h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem);margin:12px 0 18px">$18,400 raised toward this year's $30,000 goal</h2>
+      <div class="meter" role="progressbar" aria-valuenow="61" aria-valuemin="0" aria-valuemax="100" aria-label="Fund progress"><i id="meter-fill"></i></div>
+      <div class="impact"><div><b>46</b><span>moms supported</span></div><div><b>12</b><span>doula training scholarships</span></div><div><b>380</b><span>night-nurse hours funded</span></div></div>
+    </div>
+    <p class="muted small" style="max-width:40ch">These numbers are placeholders for the prototype. In production this panel reads live totals from your store and fund ledger.</p>
+  </div>
+</section>
+
+<section class="section" id="store">
+  <div class="orn orn-wave" style="opacity:.5"></div>
+  <div class="container">
+    <div class="filter-bar" role="group" aria-label="Filter products">
+      <button class="chip" aria-pressed="true" data-filter="all">All</button>
+      <button class="chip" aria-pressed="false" data-filter="tops">Tops</button>
+      <button class="chip" aria-pressed="false" data-filter="baby">Baby</button>
+      <button class="chip" aria-pressed="false" data-filter="totes">Totes</button>
+    </div>
+    <div class="grid g4" id="grid"></div>
+    <p class="center muted small" style="margin-top:var(--s7)">Sample products and prices for the prototype. Mockups are illustrative.</p>
+  </div>
+</section>
+
+<section class="section bg-cream" id="give">
+  <div class="container split">
+    <div class="stack reveal">
+      <span class="eyebrow">Give directly</span>
+      <h2>Fund a mother's village</h2>
+      <p class="lead">Every dollar goes to the scholarship fund. Choose a track, or let us put it where it's needed most.</p>
+      <ul class="check-list">
+        <li><span data-icon="check"></span><span><b>Doula support</b>Pays for prenatal, birth and postpartum doula care.</span></li>
+        <li><span data-icon="check"></span><span><b>Night-nurse care</b>Overnight newborn support so mothers can heal and rest.</span></li>
+        <li><span data-icon="check"></span><span><b>Doula training</b>Tuition and certification for aspiring doulas.</span></li>
+      </ul>
+    </div>
+    <div class="card reveal light">
+      <div class="label">Choose an amount</div>
+      <div class="row" style="margin:12px 0 20px" id="amounts"><button class="amount-btn" data-amt="25" aria-pressed="false">$25</button><button class="amount-btn" data-amt="50" aria-pressed="true">$50</button><button class="amount-btn" data-amt="100" aria-pressed="false">$100</button><button class="amount-btn" data-amt="250" aria-pressed="false">$250</button></div>
+      <div class="field"><label for="give-for">Direct my gift to</label><select class="select" id="give-for"><option>Where it's needed most</option><option>Doula support for moms</option><option>Postpartum night-nurse care</option><option>Aspiring doula training</option></select></div>
+      <button class="btn" style="width:100%;margin-top:20px" id="give-btn">Donate $50</button>
+      <p class="xs muted" style="margin:12px 0 0">Prototype — no payment is taken.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="scholarships">
+  <div class="container">
+    <div class="section-head reveal"><span class="eyebrow">Scholarships</span><h2>Support for moms. Pathways for doulas.</h2><p class="lead">Funded by every order and every gift. Applications are reviewed by our community scholarship committee.</p></div>
+    <div class="grid g4" style="margin-bottom:var(--s8)">
+      <article class="card track-card reveal"><span class="chip info">For moms</span><div class="icon-badge" data-icon="heart" style="margin:6px 0"></div><h3>Doula Support</h3><p class="small muted">Covers doula fees for families who can't access insurance coverage or pay out of pocket.</p></article>
+      <article class="card track-card reveal"><span class="chip info">For moms</span><div class="icon-badge" data-icon="moon" style="margin:6px 0"></div><h3>Night Nurse</h3><p class="small muted">Overnight newborn care in the first weeks, so you can sleep and recover.</p></article>
+      <article class="card track-card reveal"><span class="chip info">For moms</span><div class="icon-badge" data-icon="home" style="margin:6px 0"></div><h3>Prepare for Baby</h3><p class="small muted">Childbirth and lactation classes, and essentials to get ready for your little one.</p></article>
+      <article class="card track-card reveal"><span class="chip gold">For aspiring doulas</span><div class="icon-badge" data-icon="grad" style="margin:6px 0"></div><h3>Doula Training</h3><p class="small muted">Training, certification and mentorship fees for community members becoming doulas.</p></article>
+    </div>
+    <div class="split" style="align-items:start">
+      <div class="stack reveal">
+        <h3 class="h2" style="font-size:2.2rem">Apply</h3>
+        <p class="lead">Tell us a little about you and what support would mean. It takes about five minutes.</p>
+        <div class="alert warn"><span data-icon="alert"></span><span><b>Please don't include medical details</b> (diagnoses, test results, provider names) in this form. We only need to understand your situation in general terms.</span></div>
+        <p class="small muted">Scholarship applications are kept separate from the care-coordination app and are never shared with providers.</p>
+      </div>
+      <form class="card reveal" id="app-form" novalidate>
+        <div class="form-grid">
+          <div class="field full"><label for="a-track">Scholarship</label><select class="select" id="a-track"><option value="doula">Doula Support (moms)</option><option value="night">Night Nurse (moms)</option><option value="prep">Prepare for Baby (moms)</option><option value="train">Doula Training (aspiring doulas)</option></select></div>
+          <div class="field"><label for="a-name">Full name</label><input class="input" id="a-name" required autocomplete="name"></div>
+          <div class="field"><label for="a-email">Email</label><input class="input" id="a-email" type="email" required autocomplete="email"></div>
+          <div class="field"><label for="a-city">City &amp; state</label><input class="input" id="a-city" autocomplete="address-level2"></div>
+          <div class="field"><label for="a-when" id="a-when-l">Due month</label><input class="input" id="a-when" type="month"></div>
+          <div class="field full"><label for="a-story">What would this support mean for you?</label><textarea class="textarea" id="a-story" maxlength="1200"></textarea><span class="hint"><span id="a-count">0</span>/1200</span></div>
+          <div class="full"><label class="row" style="gap:10px;align-items:flex-start;font-size:.88rem"><input type="checkbox" id="a-ok" style="margin-top:4px" required><span>I'm happy for Doula's House to contact me about this application.</span></label></div>
+          <div class="full"><button class="btn" style="width:100%">Submit application</button></div>
+        </div>
+        <div class="alert ok" id="a-done" style="display:none;margin-top:16px" role="status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="js/site.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/merch.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.getElementById('grid');
+  const sel = {}; // per-product selection
+  DH.PRODUCTS.forEach(p => sel[p.id] = { color: (p.colors && p.colors[0]) || '', size: p.sizes.length === 1 ? p.sizes[0] : null });
+  function card(p) {
+    const s = sel[p.id];
+    return `<article class="product reveal in" id="${p.id}" data-kind="${p.kind}">
+      <div class="product-art" data-art>${p.tag ? `<span class="chip gold">${p.tag}</span>` : ''}${DH.productArt(p, s.color)}</div>
+      <div class="product-meta"><h3>${p.name}</h3><b>${DH.money(p.price)}</b></div>${p.kind === 'pack' ? '<p class="xs muted" style="margin:0">Five bodysuits: lotus print, heart print and three lotus-pocket colours.</p>' : ''}
+      <div class="swatches" role="group" aria-label="Colour" ${(p.colors||[]).length ? '' : 'hidden'}>${(p.colors||[]).map(c => `<button class="swatch" data-color="${c}" aria-pressed="${s.color === c}" aria-label="${c}" style="background:${DH.FILLS[c]}"></button>`).join('')}</div>
+      <div class="size-row" role="group" aria-label="Size">${p.sizes.map(z => `<button class="size" data-size="${z}" aria-pressed="${s.size === z}">${z}</button>`).join('')}</div>
+      <button class="btn btn-sm" data-add>Add to cart</button></article>`;
+  }
+  grid.innerHTML = DH.PRODUCTS.map(card).join('');
+  grid.addEventListener('click', e => {
+    const art = e.target.closest('.product'); if (!art) return;
+    const p = DH.PRODUCTS.find(x => x.id === art.id), s = sel[p.id];
+    if (e.target.closest('[data-color]')) { s.color = e.target.closest('[data-color]').dataset.color; art.querySelectorAll('[data-color]').forEach(b => b.setAttribute('aria-pressed', b.dataset.color === s.color)); art.querySelector('[data-art] svg').outerHTML = DH.productArt(p, s.color); }
+    else if (e.target.closest('[data-size]')) { s.size = e.target.closest('[data-size]').dataset.size; art.querySelectorAll('[data-size]').forEach(b => b.setAttribute('aria-pressed', b.dataset.size === s.size)); }
+    else if (e.target.closest('[data-add]')) { if (!s.size) { DH.toast('Please choose a size first.'); return; }
+      DH.cart.add({ id: p.id, name: p.name, price: p.price, color: s.color, size: s.size }); DH.toast(p.name + ' added to cart'); }
+  });
+  document.querySelectorAll('[data-filter]').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('[data-filter]').forEach(x => x.setAttribute('aria-pressed', x === b));
+    const GROUPS = { tops: ['tee', 'hoodie', 'halfzip'], baby: ['onesie', 'pack'], totes: ['tote'] };
+    grid.querySelectorAll('.product').forEach(a => a.style.display = (b.dataset.filter === 'all' || (GROUPS[b.dataset.filter] || []).includes(a.dataset.kind)) ? '' : 'none'); }));
+  if (location.hash && document.querySelector(location.hash)) setTimeout(() => document.querySelector(location.hash).scrollIntoView({ block: 'center' }), 100);
+
+  // meter
+  setTimeout(() => document.getElementById('meter-fill').style.width = '61%', 300);
+
+  // give
+  let amt = 50; const gb = document.getElementById('give-btn');
+  document.getElementById('amounts').addEventListener('click', e => { const b = e.target.closest('[data-amt]'); if (!b) return; amt = +b.dataset.amt;
+    document.querySelectorAll('[data-amt]').forEach(x => x.setAttribute('aria-pressed', x === b)); gb.textContent = 'Donate $' + amt; });
+  gb.addEventListener('click', () => DH.toast('Thank you! In production this opens secure checkout for $' + amt + '.'));
+
+  // application
+  const track = document.getElementById('a-track'), when = document.getElementById('a-when'), wl = document.getElementById('a-when-l');
+  track.addEventListener('change', () => { const t = track.value === 'train'; wl.textContent = t ? 'Planned training start' : 'Due month'; });
+  const story = document.getElementById('a-story'); story.addEventListener('input', () => document.getElementById('a-count').textContent = story.value.length);
+  document.getElementById('app-form').addEventListener('submit', async e => { e.preventDefault();
+    const name = document.getElementById('a-name').value.trim(), email = document.getElementById('a-email').value.trim();
+    if (!name || !email || !/.+@.+\..+/.test(email)) { DH.toast('Please add your name and a valid email.'); return; }
+    if (!document.getElementById('a-ok').checked) { DH.toast('Please tick the contact permission box.'); return; }
+    const ref = 'SCH-' + Math.random().toString(36).slice(2, 8).toUpperCase();
+    if (window.DHAuth && DHAuth.user && DHAuth.user.role !== 'admin') { try { await DHApi.care('scholarship.create', { track: track.value }); } catch (err) { /* the form still works without an account */ } }
+    const apps = DH.store.get('applications', []); apps.push({ ref, track: track.value, at: new Date().toISOString() }); DH.store.set('applications', apps); // demo only — no personal data stored
+    const d = document.getElementById('a-done'); d.style.display = 'flex'; d.innerHTML = DH.icon('check') + '<span><b>Application received (demo).</b> Reference ' + ref + '.' + (window.DHAuth && DHAuth.user && DHAuth.user.role !== 'admin' ? ' It now shows in your Coverage &amp; funding tab.' : ' Sign in next time and applications appear in your account.') + ' In production you would get a confirmation email and a decision timeline.</span>';
+    e.target.reset(); document.getElementById('a-count').textContent = '0'; });
+});
+</script>
+</body>
+</html>

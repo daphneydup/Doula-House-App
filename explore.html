@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brand Options — Doula's House</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .ex-hero { background: var(--mocha-3); color: var(--cream); padding-block: clamp(56px, 8vw, 104px); position: relative; overflow: hidden; background-image: radial-gradient(900px 600px at 82% 0%, rgba(209,160,79,.2), transparent 62%); }
+  .ex-hero h1 { font-size: clamp(2.6rem, 6.4vw, 5.4rem); letter-spacing: -.035em; } .ex-hero h1 em { color: var(--camel); }
+  .ex-hero .lead { color: #eadfcb; }
+  .feel { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: var(--s7); } @media (max-width: 720px) { .feel { grid-template-columns: 1fr; } }
+  .feel > div { border-top: 2px solid var(--camel); padding-top: 14px; } .feel b { font-family: var(--font-display); font-size: 1.6rem; font-weight: 380; display: block; } .feel span { color: #cbbfae; font-size: .92rem; }
+  .why { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; background: #fff; border: 1px solid var(--line-soft); border-radius: var(--r-lg); padding: 22px 28px; margin-top: var(--s7); color: var(--ink); }
+  .why .oh { font-family: var(--font-display); font-size: 3rem; letter-spacing: -.03em; line-height: 1; } .why svg { height: 70px; width: auto; color: var(--umber); }
+  .ctl { position: sticky; top: var(--header-h); z-index: 60; background: rgba(255,253,249,.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line-soft); }
+  .ctl .container { display: flex; gap: 26px; align-items: center; padding-block: 10px; overflow-x: auto; scrollbar-width: none; }
+  .ctl .grp { display: flex; gap: 8px; align-items: center; flex-wrap: nowrap; flex: none; }
+  @media (max-height: 760px) { .ctl { position: static; } } .ctl .lbl { font-size: .66rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+  .opt-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s5); } @media (max-width: 980px) { .opt-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } } @media (max-width: 620px) { .opt-grid { grid-template-columns: 1fr; } }
+  .opt { background: #fff; border: 1.5px solid var(--line-soft); border-radius: var(--r-lg); overflow: hidden; display: flex; flex-direction: column; transition: border-color .2s, box-shadow .2s; }
+  .opt.picked { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink), var(--shadow-md); }
+  .opt .stage { aspect-ratio: 1.15; display: grid; place-items: center; padding: 22px; position: relative; }
+  .opt .stage .main { width: 62%; }
+  .opt .num { position: absolute; top: 14px; left: 16px; font-family: var(--font-display); font-style: italic; color: var(--gold); font-size: 1.1rem; }
+  .opt .row3 { display: grid; grid-template-columns: 1.4fr 1fr 1fr; border-top: 1px solid var(--line-soft); }
+  .opt .row3 > div { display: grid; place-items: center; padding: 14px 8px; min-height: 86px; } .opt .row3 > div + div { border-left: 1px solid var(--line-soft); }
+  .opt .lock { display: flex; align-items: center; gap: .5em; font-family: var(--font-display); font-weight: 330; font-variation-settings: "SOFT" 100, "WONK" 0, "opsz" 144; letter-spacing: -.022em; font-size: 1.5rem; white-space: nowrap; line-height: 1; } .lock > span { flex: none; display: block; } .lock > span svg { width: 100%; height: 100%; display: block; }
+  .opt .body { padding: 18px 20px 20px; display: grid; gap: 10px; flex: 1; align-content: start; } .opt h3 { font-size: 1.4rem; } .opt p { margin: 0; font-size: .9rem; color: var(--ink-2); }
+  .meter3 { display: grid; gap: 6px; font-size: .72rem; } .meter3 div { display: grid; grid-template-columns: 58px 1fr; gap: 8px; align-items: center; letter-spacing: .1em; text-transform: uppercase; font-weight: 650; color: var(--muted); }
+  .dots { display: flex; gap: 4px; } .dots i { width: 14px; height: 6px; border-radius: 3px; background: var(--sand); } .dots i.on { background: var(--gold); }
+  .pick-btn { margin: 0 20px 20px; }
+  .name-card .nm { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); letter-spacing: -.03em; font-weight: 350; line-height: 1; padding: 26px 22px 6px; }
+  .name-card .tg { padding: 0 22px 12px; font-size: .74rem; letter-spacing: .24em; text-transform: uppercase; font-weight: 650; color: var(--muted); }
+  .say { background: var(--cream); border-radius: var(--r-sm); padding: 12px 14px; font-family: var(--font-display); font-size: 1.02rem; line-height: 1.35; }
+  .flag { display: flex; gap: 8px; align-items: flex-start; font-size: .8rem; padding: 10px 12px; border-radius: var(--r-sm); } .flag svg { width: 16px; height: 16px; flex: none; margin-top: 2px; }
+  .flag.ok { background: var(--ok-bg); color: var(--ok); } .flag.warn { background: var(--warn-bg); color: var(--warn); } .flag.bad { background: var(--bad-bg); color: var(--bad); }
+  .pal { border-radius: var(--r-lg); overflow: hidden; border: 1.5px solid var(--line-soft); background: #fff; } .pal.picked { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink), var(--shadow-md); }
+  .pal .sw { display: flex; height: 92px; } .pal .sw span { flex: 1; display: flex; align-items: flex-end; padding: 8px; font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+  .pal .body { padding: 16px 20px 20px; display: grid; gap: 8px; } .pal table { width: 100%; font-size: .78rem; border-collapse: collapse; } .pal td { padding: 4px 0; border-top: 1px solid var(--line-soft); }
+  .mock { border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow-lg); }
+  .mock-bar { display: flex; justify-content: space-between; align-items: center; padding: 16px 28px; } .mock-bar .lock { display: flex; align-items: center; gap: .5em; font-family: var(--font-display); font-weight: 330; font-variation-settings: "SOFT" 100, "opsz" 144; letter-spacing: -.022em; font-size: 1.7rem; } 
+  .mock-hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; padding: 28px 28px 56px; } @media (max-width: 800px) { .mock-hero { grid-template-columns: 1fr; } }
+  .mock-hero h2 { font-size: clamp(2.2rem, 5vw, 4rem); letter-spacing: -.03em; line-height: 1; } .mock-hero h2 em { font-style: italic; }
+  .mock-arch { aspect-ratio: 3/3.6; border-radius: 999px 999px 24px 24px; overflow: hidden; max-width: 340px; justify-self: center; width: 100%; } .mock-arch img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }
+  .mock-btn { display: inline-flex; align-items: center; height: 52px; padding: 0 30px; border-radius: 999px; font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+  .picks { position: fixed; left: 0; right: 0; bottom: 0; z-index: 80; background: var(--ink); color: var(--cream); padding: 12px var(--gutter); display: flex; gap: 18px; align-items: center; justify-content: center; flex-wrap: wrap; font-size: .86rem; }
+  .picks b { color: var(--camel); } .picks .btn { min-height: 38px; }
+  body { padding-bottom: 64px; }
+</style>
+</head>
+<body data-page="explore">
+<div id="site-header"></div>
+<main id="main">
+
+<section class="ex-hero">
+  <div class="orn orn-tr gold" style="opacity:.6"></div>
+  <div class="container">
+    <span class="eyebrow" style="color:var(--camel)">Brand options · round 3</span>
+    <h1 style="margin:22px 0 24px">Rooted. <em>Excited.</em> Fresh.</h1>
+    <p class="lead" style="max-width:62ch">Six logo directions, eight names and three palettes — mix any combination and see it as a real page. Pick favourites, copy your picks, and I’ll apply them across the whole site.</p>
+    <div class="feel"><div><b>Rooted</b><span>Grounded, generational, community-first. Earth, roots, a place you belong.</span></div><div><b>Excited</b><span>Energy and joy. Warm light, motion, colour you can feel across a room.</span></div><div><b>Fresh</b><span>New life, new beginnings. Green shoots, air, space — never dusty or clinical.</span></div></div>
+    <div class="why"><span class="oh" aria-hidden="true">dh → oh</span><span id="old-mark" style="color:var(--umber)"></span><p style="margin:0;max-width:56ch;font-size:.95rem"><b>Why change the mark:</b> a ring plus a stem reads as an “o” and an “h” — so “dh” looks like “oh”. These directions solve it two ways: symbols that don’t depend on letters, and one with a clearly-readable capital D.</p></div>
+  </div>
+</section>
+
+<div class="ctl"><div class="container">
+  <div class="grp"><span class="lbl">Name</span><span id="name-chips" class="grp"></span></div>
+  <div class="grp"><span class="lbl">Palette</span><span id="pal-chips" class="grp"></span></div>
+</div></div>
+
+<section class="section" id="logos">
+  <div class="container">
+    <div class="section-head left"><span class="eyebrow">A · Logo directions</span><h2>Six ways to say rooted, excited and fresh</h2><p class="lead">All six carry the lotus — resilience and rebirth. Shown with the name and palette selected above.</p></div>
+    <div class="opt-grid" id="logo-grid"></div>
+  </div>
+</section>
+
+<section class="section bg-cream" id="names">
+  <div class="container">
+    <div class="section-head left"><span class="eyebrow">B · Name options</span><h2>Eight names — and what a quick search found</h2><p class="lead">I searched for each name alongside doula, birth and postpartum. That is <b>not</b> a trademark or domain search — treat flags as early warnings, and have counsel run a proper clearance on your shortlist.</p></div>
+    <div class="opt-grid" id="name-grid"></div>
+  </div>
+</section>
+
+<section class="section" id="palettes">
+  <div class="container">
+    <div class="section-head left"><span class="eyebrow">C · Palettes</span><h2>Three ways to feel it</h2><p class="lead">Contrast is computed for each. Bright accents are for graphics and large type; the deep colour carries body text.</p></div>
+    <div class="grid g3" id="pal-grid"></div>
+  </div>
+</section>
+
+<section class="section bg-sand" id="together">
+  <div class="container">
+    <div class="section-head left"><span class="eyebrow">D · Put it together</span><h2>Your picks, as a page</h2></div>
+    <div class="mock" id="mock"></div>
+  </div>
+</section>
+
+</main>
+<div id="site-footer"></div>
+<div class="picks" id="picks" role="status"></div>
+<script src="js/site.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/merch.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const $ = (s) => document.querySelector(s);
+  const strip = (s) => s.replace(/<svg[^>]*>|<\/svg>/g, '');
+
+  /* ---------- palettes ---------- */
+  const PALS = [
+    { id: 'rooted', name: 'Rooted+', blurb: 'Your earth tones, plus a leaf green for fresh.', dark: '#5a3a1e', a1: '#aa4f36', a2: '#5f8a4e', sun: '#d1a04f', bg: '#f6efe4', ink: '#261c17', sky: '#7c95b1' },
+    { id: 'sunrise', name: 'Sunrise', blurb: 'Deep forest, marigold and coral — the most excited.', dark: '#1f3a2d', a1: '#e8553e', a2: '#f2a900', sun: '#f2a900', bg: '#fbf4e6', ink: '#14241b', sky: '#8fc1d4' },
+    { id: 'garden', name: 'Garden', blurb: 'Aubergine, lotus pink and leaf — rooted and bright.', dark: '#3b1f3a', a1: '#e0527c', a2: '#6f9a42', sun: '#f5c344', bg: '#fdf3ec', ink: '#26142a', sky: '#9ab8d4' }
+  ];
+  /* ---------- names ---------- */
+  const NAMES = [
+    { n: 'Doula’s House', tg: 'Birthing your story', mean: 'Your current name: a home, a welcome, and a place that belongs to the doula. The strongest tie to your deck.', r: [4, 3, 3], f: ['ok', 'Your existing name — no rename cost. Domain and trademark not checked in this search.'], say: 'Welcome to Doula’s House.' },
+    { n: 'Sunroot', tg: 'Rooted. Rising.', mean: 'Sun + root: grounded and glowing. (Also an edible root that grows toward the light.) Short, spoken easily, wide open for a mark.', r: [4, 5, 4], f: ['warn', 'No exact “Sunroot” found in doula or birth results — but “root” names are crowded here (Birth Roots ×3, The Nurturing Root).'], say: 'I’m a Sunroot doula.' },
+    { n: 'Open Hands', tg: 'Many hands, one circle', mean: 'The village made literal: hands that catch, hold and give. Warm, active, communal — and the heart of what you do.', r: [5, 3, 4], f: ['warn', 'No exact match found, but “Open Arms Perinatal Services” (Seattle) is very close in sound and category.'], say: 'Open Hands is holding her plan.' },
+    { n: 'Tendril', tg: 'Reaching toward the light', mean: 'The curling new growth that finds support and climbs. Fresh, lively, abstract — a name that is all yours.', r: [3, 4, 5], f: ['ok', 'No matches found with doula, birth or postpartum. Abstract names are easier to own, but need more story.'], say: 'Her team lives in Tendril.' },
+    { n: 'Marigold', tg: 'Bright beginnings', mean: 'The flower of celebration and remembrance in many cultures. Excited, sunny, rooted in ritual — and a ready-made orange.', r: [4, 5, 4], f: ['warn', 'Not searched yet. “Marigold” is a common brand name across industries — expect a crowded field.'], say: 'Marigold is with her tonight.' },
+    { n: 'Daybreak', tg: 'Every birth, a new day', mean: 'The first light after the longest night: rebirth, hope, energy. Pairs naturally with the lotus that opens at dawn.', r: [3, 5, 5], f: ['warn', 'Not searched yet. “Daybreak” is widely used; likely needs a qualifier (e.g. “Daybreak Birth”).'], say: 'Daybreak starts at the first visit.' },
+    { n: 'Many Hands', tg: 'It takes many hands', mean: 'The proverb made into a promise: mother, doula and clinician as one team. Friendly, plain-spoken, instantly understood.', r: [5, 4, 3], f: ['warn', 'Not searched yet. Descriptive names are memorable but hard to protect legally.'], say: 'Many Hands has her plan.' },
+    { n: 'Birthroot', tg: 'Rooted in every birth', mean: 'Named for a woodland wildflower long known by this name. Strong story — but see the flag.', r: [5, 3, 3], f: ['bad', 'Not recommended: “BirthRoot” (Erie, PA) is an active community doula alliance, plus three “Birth Roots” organisations (Portland ME, Winnipeg, a community midwifery practice).'], say: 'Birthroot is holding her plan.' }
+  ];
+
+  /* ---------- logo directions ---------- */
+  const lot = (color, cx, by, w) => { const sc = w / 52; return `<g transform="translate(${cx - 26 * sc} ${by - 35 * sc}) scale(${sc})">${strip(DH.lotus('', { color }))}</g>`; };
+  const HEART = 'M30 82C21 75 18 70 18 66C18 61 26 59 30 65C34 59 42 61 42 66C42 70 39 75 30 82Z';
+  const heart = (color, cx, cy, s) => `<path d="${HEART}" fill="${color}" transform="translate(${cx - 30 * s} ${cy - 71.5 * s}) scale(${s})"/>`;
+  const pet = (a, L, w, color, cx = 60, cy = 60) => `<path d="M${cx} ${cy} C${cx - w} ${cy - L * 0.3} ${cx - w} ${cy - L * 0.74} ${cx} ${cy - L} C${cx + w} ${cy - L * 0.74} ${cx + w} ${cy - L * 0.3} ${cx} ${cy}Z" fill="${color}" transform="rotate(${a} ${cx} ${cy})"/>`;
+  const LOGOS = [
+    { id: 'L1', t: 'Rooted Bloom', idea: 'A lotus above the waterline, its roots reaching below. Literally rooted — and rising. The calmest, most grounded option.', r: [5, 2, 4],
+      svg: (p) => `<svg viewBox="0 0 120 120" fill="none" stroke-linecap="round">${lot(p.a1, 60, 59, 74)}<path d="M18 62H44M76 62H102" stroke="${p.a2}" stroke-width="3.6"/><path d="M26 69H40M80 69H94" stroke="${p.a2}" stroke-width="3" opacity=".7"/><g stroke="${p.dark}" stroke-width="4.2"><path d="M60 62V112"/><path d="M60 74C50 76 42 82 37 94"/><path d="M60 74C70 76 78 82 83 94"/><path d="M60 90C53 92 48 98 46 110"/><path d="M60 90C67 92 72 98 74 110"/><path d="M37 94C33 96 30 100 27 104" stroke-width="3"/><path d="M83 94C87 96 90 100 93 104" stroke-width="3"/></g></svg>` },
+    { id: 'L2', t: 'Sunrise Lotus', idea: 'A lotus opening in front of a rising sun, rays reaching out. The most excited direction — joy you can see from across the street.', r: [2, 5, 5],
+      svg: (p) => { const rays = Array.from({ length: 9 }, (_, i) => { const a = (200 + i * 17.5) * Math.PI / 180; const x1 = 60 + 38 * Math.cos(a), y1 = 86 + 38 * Math.sin(a), x2 = 60 + 52 * Math.cos(a), y2 = 86 + 52 * Math.sin(a); return `<path d="M${x1.toFixed(1)} ${y1.toFixed(1)}L${x2.toFixed(1)} ${y2.toFixed(1)}"/>`; }).join(''); return `<svg viewBox="0 0 120 120" fill="none" stroke-linecap="round"><path d="M28 86A32 32 0 0 1 92 86Z" fill="${p.sun}"/><g stroke="${p.sun}" stroke-width="4.4">${rays}</g>${lot(p.a1, 60, 86, 62)}<path d="M10 86H110" stroke="${p.dark}" stroke-width="4.4"/><path d="M26 98H52M68 98H94" stroke="${p.a2}" stroke-width="3.6"/><path d="M40 108H80" stroke="${p.a2}" stroke-width="3" opacity=".7"/></svg>`; } },
+    { id: 'L3', t: 'Doorway Bloom', idea: 'The arch you know, now holding a lotus and a heart — no letters to misread. A threshold, a welcome, a bloom.', r: [4, 3, 4],
+      svg: (p) => `<svg viewBox="0 0 120 120" fill="none"><path d="M22 112V58A38 38 0 0 1 98 58V112" stroke="${p.dark}" stroke-width="11"/>${heart(p.a1, 60, 66, 0.62)}${lot(p.a1, 60, 106, 54)}<path d="M10 112H110" stroke="${p.a2}" stroke-width="4" stroke-linecap="round"/></svg>` },
+    { id: 'L4', t: 'Circle Bloom', idea: 'A lotus seen from above — petals around a heart-seed, like people around a circle of care. Radial, energetic, endlessly extendable as a pattern.', r: [3, 5, 4],
+      svg: (p) => `<svg viewBox="0 0 120 120">${Array.from({ length: 8 }, (_, i) => pet(i * 45, 52, 11, p.a1)).join('')}${Array.from({ length: 8 }, (_, i) => pet(22.5 + i * 45, 38, 9, p.sun)).join('')}<circle cx="60" cy="60" r="13" fill="${p.dark}"/>${heart(p.sun, 60, 60, 0.42)}</svg>` },
+    { id: 'L5', t: 'Capital D', idea: 'A bold, unmistakable capital D — a doorway on its side — with a lotus and a heart inside. Impossible to read as “oh”. Best if the name starts with D.', r: [4, 3, 3],
+      svg: (p) => `<svg viewBox="0 0 120 120" fill="none"><path d="M30 18V102H58A42 42 0 0 0 58 18Z" stroke="${p.dark}" stroke-width="14" stroke-linejoin="miter"/>${heart(p.a1, 62, 56, 0.66)}${lot(p.a1, 62, 92, 50)}</svg>` },
+    { id: 'L6', t: 'Two Rings', idea: 'A larger ring holding a heart, a smaller ring holding a new lotus bud — mother and child, side by side. Reads as “oo”, so it loves names like Sunroot.', r: [4, 4, 4],
+      svg: (p) => `<svg viewBox="0 0 120 120" fill="none"><circle cx="44" cy="62" r="29" stroke="${p.dark}" stroke-width="12"/><circle cx="92" cy="74" r="17" stroke="${p.a2}" stroke-width="10"/>${heart(p.a1, 44, 62, 0.78)}${lot(p.a1, 92, 82, 26)}</svg>` }
+  ];
+
+  /* ---------- state ---------- */
+  const S = Object.assign({ name: 'Sunroot', pal: 'sunrise', logo: 'L1' }, (() => { try { return JSON.parse(localStorage.getItem('dh:explore')) || {}; } catch (e) { return {}; } })());
+  const save = () => { try { localStorage.setItem('dh:explore', JSON.stringify(S)); } catch (e) { /* ignore */ } };
+  const pal = () => PALS.find((p) => p.id === S.pal);
+  const lum = (h) => { const c = [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255).map((v) => (v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4))); return .2126 * c[0] + .7152 * c[1] + .0722 * c[2]; };
+  const cr = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); };
+  const lockup = (L, p, name) => `<span class="lock" style="color:${p.ink}"><span style="width:${L.id === 'L6' ? '2.4em' : '1.7em'};height:1.7em">${L.svg(p)}</span>${name}</span>`;
+  const dots = (v) => `<span class="dots">${[1, 2, 3, 4, 5].map((i) => `<i class="${i <= v ? 'on' : ''}"></i>`).join('')}</span>`;
+
+  /* ---------- controls ---------- */
+  function chips() {
+    $('#name-chips').innerHTML = NAMES.map((x) => `<button class="chip" aria-pressed="${S.name === x.n}" data-name="${x.n}">${x.n}</button>`).join('');
+    $('#pal-chips').innerHTML = PALS.map((x) => `<button class="chip" aria-pressed="${S.pal === x.id}" data-pal="${x.id}"><i style="width:12px;height:12px;border-radius:50%;background:${x.a1};display:inline-block"></i>${x.name}</button>`).join('');
+  }
+  function logos() {
+    const p = pal();
+    $('#logo-grid').innerHTML = LOGOS.map((L, i) => `<article class="opt ${S.logo === L.id ? 'picked' : ''}"><div class="stage" style="background:${p.bg}"><span class="num">${L.id}</span><div class="main">${L.svg(p)}</div></div>
+      <div class="row3"><div style="background:${p.bg}">${lockup(L, p, S.name)}</div><div style="background:${p.dark}"><span style="width:46px;display:block">${L.svg({ ...p, dark: p.bg, ink: p.bg })}</span></div><div style="background:${p.bg}"><span style="width:20px;display:block">${L.svg(p)}</span><span class="xs muted">20 px</span></div></div>
+      <div class="body"><h3>${L.t}</h3><p>${L.idea}</p><div class="meter3"><div>Rooted${dots(L.r[0])}</div><div>Excited${dots(L.r[1])}</div><div>Fresh${dots(L.r[2])}</div></div></div>
+      <button class="btn ${S.logo === L.id ? '' : 'btn-ghost'} btn-sm pick-btn" data-logo="${L.id}">${S.logo === L.id ? '★ Your pick' : 'Pick ' + L.id}</button></article>`).join('');
+  }
+  function names() {
+    const p = pal(), ic = { ok: 'check', warn: 'alert', bad: 'x' };
+    $('#name-grid').innerHTML = NAMES.map((x) => `<article class="opt name-card ${S.name === x.n ? 'picked' : ''}"><div style="background:${p.bg};border-bottom:1px solid var(--line-soft)"><div class="nm" style="color:${p.ink}">${x.n}</div><div class="tg">${x.tg}</div></div>
+      <div class="body"><p>${x.mean}</p><div class="say">“${x.say}”</div><div class="meter3"><div>Rooted${dots(x.r[0])}</div><div>Excited${dots(x.r[1])}</div><div>Fresh${dots(x.r[2])}</div></div><div class="flag ${x.f[0]}">${DH.icon(ic[x.f[0]])}<span>${x.f[1]}</span></div></div>
+      <button class="btn ${S.name === x.n ? '' : 'btn-ghost'} btn-sm pick-btn" data-name="${x.n}">${S.name === x.n ? '★ Your pick' : 'Pick this name'}</button></article>`).join('');
+  }
+  function palettes() {
+    const row = (l, f, b) => { const r = cr(f, b); return `<tr><td>${l}</td><td style="text-align:right"><b>${r.toFixed(1)}</b> · <span class="chip ${r >= 4.5 ? 'ok' : r >= 3 ? 'warn' : 'bad'}" style="height:22px">${r >= 4.5 ? 'text OK' : r >= 3 ? 'large text / graphics' : 'graphics only'}</span></td></tr>`; };
+    $('#pal-grid').innerHTML = PALS.map((x) => `<article class="pal ${S.pal === x.id ? 'picked' : ''}"><div class="sw">${[['dark', x.dark], ['a1', x.a1], ['a2', x.a2], ['sun', x.sun], ['sky', x.sky], ['bg', x.bg]].map(([l, c]) => `<span style="background:${c};color:${lum(c) > .4 ? '#14110d' : '#fff'}">${c}</span>`).join('')}</div>
+      <div class="body"><h3 style="font-size:1.4rem">${x.name}</h3><p class="small" style="margin:0">${x.blurb}</p><table>${row('Deep on background', x.dark, x.bg)}${row('Accent 1 on background', x.a1, x.bg)}${row('Accent 2 on background', x.a2, x.bg)}</table><button class="btn ${S.pal === x.id ? '' : 'btn-ghost'} btn-sm" data-pal="${x.id}">${S.pal === x.id ? '★ Your pick' : 'Pick ' + x.name}</button></div></article>`).join('');
+  }
+  function mock() {
+    const p = pal(), L = LOGOS.find((l) => l.id === S.logo);
+    $('#mock').innerHTML = `<div style="background:${p.bg};color:${p.ink}"><div class="mock-bar" style="border-bottom:1px solid ${p.dark}22"><span class="lock">${'<span style="width:' + (L.id === 'L6' ? '2.4em' : '1.7em') + ';height:1.7em">' + L.svg(p) + '</span>'}${S.name}</span><span style="display:flex;gap:22px;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase"><span>Families</span><span>Doulas</span><span>Care teams</span></span></div>
+      <div class="mock-hero"><div><span class="eyebrow" style="color:${p.a1}">${NAMES.find((x) => x.n === S.name).tg}</span><h2 style="margin:20px 0 22px">Every birth deserves a <em style="color:${p.a1}">whole</em> team.</h2><p class="lead" style="color:${p.dark}">${S.name} brings doulas, families and care teams onto one shared plan — and helps doulas get paid.</p><div class="row" style="margin-top:28px"><span class="mock-btn" style="background:${p.dark};color:${p.bg}">Find your care team</span><span class="mock-btn" style="border:1.5px solid ${p.dark};color:${p.dark}">I’m a doula</span></div></div>
+      <div style="position:relative"><div class="mock-arch" style="background:${p.dark}"><img src="assets/portrait-front.jpg" alt=""></div><span style="position:absolute;left:4%;bottom:6%;background:${p.sun};color:${p.ink};padding:10px 16px;border-radius:999px;font-weight:700;font-size:.8rem">Welcome to ${S.name}</span></div></div></div>`;
+  }
+  function picks() {
+    const L = LOGOS.find((l) => l.id === S.logo), P = pal();
+    $('#picks').innerHTML = `<span>Logo <b>${L.t} (${L.id})</b></span><span>Name <b>${S.name}</b></span><span>Palette <b>${P.name}</b></span><button class="btn btn-gold btn-sm" id="copy">Copy my picks</button>`;
+    $('#copy').onclick = async () => { const t = `Logo: ${L.t} (${L.id}) · Name: ${S.name} · Palette: ${P.name}`; try { await navigator.clipboard.writeText(t); DH.toast('Copied: ' + t); } catch (e) { DH.toast(t); } };
+  }
+  function render() { chips(); logos(); names(); palettes(); mock(); picks(); }
+  document.addEventListener('click', (e) => {
+    const t = e.target.closest('[data-name],[data-pal],[data-logo]'); if (!t) return;
+    if (t.dataset.name) S.name = t.dataset.name; if (t.dataset.pal) S.pal = t.dataset.pal; if (t.dataset.logo) S.logo = t.dataset.logo;
+    save(); render();
+  });
+  $('#old-mark').innerHTML = `<span style="width:78px;display:block">${DH.mark('', {})}</span>`;
+  render();
+});
+</script>
+</body>
+</html>

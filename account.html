@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Account — Doula's House</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/app.css">
+<style>.side-nav { top: calc(var(--header-h) + 24px); } .stat-line { display:grid; grid-template-columns: 140px 1fr; gap:8px; padding:10px 0; border-top:1px solid var(--line-soft); font-size:.92rem } .stat-line:first-child{border-top:0}</style>
+</head>
+<body data-page="account">
+<div id="site-header"></div>
+<main id="main"><div class="container app-shell"><nav class="side-nav" id="nav" aria-label="Account sections"></nav><section id="view" aria-live="polite"></section></div></main>
+<div id="site-footer"></div>
+<script src="js/site.js"></script>
+<script src="js/care-core.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/merch.js"></script>
+<script>
+(function () {
+  const $ = (s, r = document) => r.querySelector(s);
+  const { esc, icon, toast } = DH;
+  const ROLE = { mom: 'Mom / family', doula: 'Doula', clinician: 'Clinician', admin: 'Staff' };
+  const fmt = (iso) => new Date(iso).toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' });
+  const STATUS = { approved: ['ok', 'Published'], pending: ['warn', 'In review'], rejected: ['bad', 'Not published'] };
+  let tab = (location.hash || '#profile').slice(1), editing = null, user = null, cache = {};
+
+  /* ---- little confirm dialog (no window.confirm) ---- */
+  function confirmBox(title, text, ok, danger = true, withPassword = false) {
+    return new Promise((resolve) => {
+      let m = $('#cbox'); if (!m) { m = document.createElement('div'); m.id = 'cbox'; m.className = 'modal'; m.setAttribute('role', 'alertdialog'); m.setAttribute('aria-modal', 'true'); document.body.appendChild(m); }
+      m.innerHTML = `<h3 class="h3">${esc(title)}</h3><p class="muted">${esc(text)}</p>${withPassword ? '<div class="field" style="margin:14px 0"><label for="cb-pw">Your password</label><input class="input" id="cb-pw" type="password" autocomplete="current-password"></div>' : ''}<div class="alert bad form-error" id="cb-err" style="display:none;margin-bottom:12px" role="alert"><span></span></div><div class="row"><button class="btn ${danger ? 'btn-danger' : ''}" id="cb-ok">${esc(ok)}</button><button class="btn btn-ghost" id="cb-no">Cancel</button></div>`;
+      DH.openLayer('cbox'); if (withPassword) setTimeout(() => $('#cb-pw').focus(), 50);
+      const done = (v) => { DH.closeLayers(); resolve(v); };
+      $('#cb-no').onclick = () => done(null);
+      $('#cb-ok').onclick = () => done(withPassword ? ($('#cb-pw').value || '') : true);
+      document.querySelector('[data-overlay]').addEventListener('click', () => resolve(null), { once: true });
+    });
+  }
+  const bad = (e) => toast(e.message || 'Something went wrong.');
+
+  /* ---- views ---- */
+  const nav = () => {
+    const items = [['profile', 'Profile', 'users'], ['security', 'Security', 'lock'], ['stories', 'My stories', 'message']];
+    if (user.role === 'admin') items.push(['users', 'Staff · Users', 'key'], ['moderation', 'Staff · Stories', 'shield']);
+    $('#nav').innerHTML = items.map(([id, l, i]) => `<button data-tab="${id}" ${tab === id ? 'aria-current="page"' : ''}>${icon(i)}${l}</button>`).join('') +
+      `<button data-act="signout" style="margin-top:12px">${icon('arrow')}Sign out</button>`;
+  };
+  const head = (t, s) => `<div class="view-head"><h2>${t}</h2>${s ? `<p>${s}</p>` : ''}</div>`;
+
+  const SET = [['hospital', 'Hospital'], ['birthcenter', 'Birth center'], ['home', 'Home']];
+  function roleFields() {
+    const p = user.profile || {}, v = (x) => esc(x == null ? '' : x), csv = (a) => esc((a || []).join(', '));
+    if (user.role === 'mom') return `<div class="full"><div class="rule3"></div><h3 class="h3" style="font-size:1.2rem">Your pregnancy &amp; coverage</h3><p class="hint" style="margin:6px 0 0">Used for your week count and, with your consent to your doula, billing checks. Only people you add to your care team ever see coverage details.</p></div>
+      <div class="field"><label for="pf-due">Due date</label><input class="input" id="pf-due" type="date" value="${v(p.dueDate)}"></div>
+      <div class="field"><label for="pf-state">State</label><input class="input" id="pf-state" maxlength="2" value="${v(p.state)}" placeholder="NY" style="text-transform:uppercase"></div>
+      <div class="field"><label for="pf-plan">Coverage</label><select class="select" id="pf-plan">${['', 'Medicaid', 'Private', 'Self-pay'].map((o) => `<option value="${o}" ${p.plan === o ? 'selected' : ''}>${o || 'Not set'}</option>`).join('')}</select></div>
+      <div class="field"><label for="pf-mid">Member ID — last 4 digits</label><input class="input" id="pf-mid" inputmode="numeric" maxlength="4" value="${v(p.memberLast4)}"></div>`;
+    if (user.role === 'doula' || user.role === 'clinician') {
+      const doula = user.role === 'doula';
+      return `<div class="full"><div class="rule3"></div><h3 class="h3" style="font-size:1.2rem">Your practice profile</h3><p class="hint" style="margin:6px 0 0">Shown to families who browse “Find your team”. Never includes anything about your clients.</p></div>
+      <div class="field full"><label for="pf-head">One-line headline</label><input class="input" id="pf-head" maxlength="120" value="${v(p.headline)}"></div>
+      <div class="field"><label for="pf-org">${doula ? 'Practice' : 'Practice / hospital'}</label><input class="input" id="pf-org" maxlength="80" value="${v(p.org)}"></div>
+      <div class="field"><label for="pf-cert">${doula ? 'Certification (needed for billing)' : 'Credentials'}</label><input class="input" id="pf-cert" maxlength="80" value="${v(p.cert)}" placeholder="${doula ? 'e.g. DONA' : 'e.g. MD, CNM'}"></div>
+      ${doula ? '' : `<div class="field"><label for="pf-title">Title</label><input class="input" id="pf-title" maxlength="80" value="${v(p.title)}" placeholder="OB-GYN"></div>`}
+      <div class="field"><label for="pf-years">Years in practice</label><input class="input" id="pf-years" inputmode="numeric" maxlength="3" value="${v(p.yearsPractice)}"></div>
+      <div class="field"><label for="pf-lang">Languages <span class="muted" style="text-transform:none;letter-spacing:0;font-weight:500">(comma-separated)</span></label><input class="input" id="pf-lang" value="${csv(p.languages)}"></div>
+      <div class="field"><label for="pf-ins">Insurance accepted</label><input class="input" id="pf-ins" value="${csv(p.insurance)}" placeholder="Medicaid, Private"></div>
+      ${doula ? `<div class="field"><label for="pf-svc">Services</label><input class="input" id="pf-svc" value="${csv(p.services)}" placeholder="Birth, Postpartum"></div>` : ''}
+      <div class="field full"><span class="label">Birth settings</span><div class="row" style="gap:16px">${SET.map(([k, l]) => `<label class="row" style="gap:8px;font-size:.92rem"><input type="checkbox" data-set="${k}" ${(p.settings || []).includes(k) ? 'checked' : ''}> ${l}</label>`).join('')}</div></div>
+      <label class="full row" style="gap:10px;font-size:.92rem"><input type="checkbox" id="pf-listed" ${p.listed !== false ? 'checked' : ''}> Show me in the directory so families can request an introduction</label>`;
+    }
+    return '';
+  }
+  function collectProfile() {
+    const g = (id) => { const e = $(id); return e ? e.value : undefined; };
+    if (user.role === 'mom') return { dueDate: g('#pf-due'), state: g('#pf-state'), plan: g('#pf-plan'), memberLast4: g('#pf-mid') };
+    const p = { headline: g('#pf-head'), org: g('#pf-org'), cert: g('#pf-cert'), yearsPractice: g('#pf-years'), languages: g('#pf-lang'), insurance: g('#pf-ins'), settings: [...document.querySelectorAll('[data-set]:checked')].map((x) => x.dataset.set), listed: $('#pf-listed').checked };
+    if ($('#pf-title')) p.title = g('#pf-title'); if ($('#pf-svc')) p.services = g('#pf-svc'); return p;
+  }
+  function profile() {
+    return `${head('Your profile', 'This is what your care team and community see.')}
+    <div class="panel"><div class="row" style="gap:16px;margin-bottom:20px"><div class="avatar lg">${esc(user.name.split(' ').map((x) => x[0]).slice(0, 2).join('').toUpperCase())}</div><div><b style="font-size:1.1rem">${esc(user.name)}</b><div class="small muted">${esc(user.email)} · <span class="chip gold">${ROLE[user.role]}</span></div></div></div>
+      <form id="pf" class="form-grid" novalidate>
+        <div class="field"><label for="pf-name">Full name</label><input class="input" id="pf-name" value="${esc(user.name)}" maxlength="80" autocomplete="name"></div>
+        <div class="field"><label for="pf-city">City &amp; state</label><input class="input" id="pf-city" value="${esc(user.city)}" maxlength="80"></div>
+        <div class="field full"><label for="pf-email">Email</label><input class="input" id="pf-email" type="email" value="${esc(user.email)}" autocomplete="email"></div>
+        <div class="field full" id="pf-pw-wrap" hidden><label for="pf-pw">Current password <span class="muted" style="text-transform:none;letter-spacing:0;font-weight:500">(needed to change email)</span></label><input class="input" id="pf-pw" type="password" autocomplete="current-password"></div>
+        ${roleFields()}
+        <div class="field full"><label for="pf-bio">About you</label><textarea class="textarea" id="pf-bio" maxlength="500">${esc(user.bio)}</textarea><span class="hint">Don't include health details here.</span></div>
+        <div class="full row"><button class="btn btn-sm">Save changes</button><span class="xs muted">Member since ${new Date(user.createdAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</span></div>
+      </form></div>
+    <div class="panel" style="border-color:#e8c9c4"><h3 style="color:var(--bad)">Delete account</h3><p class="small muted">Permanently removes your profile, workspace data and any stories you've submitted. This can't be undone.</p><button class="btn btn-ghost btn-sm" data-act="delete" style="border-color:var(--bad);color:var(--bad)">Delete my account…</button></div>`;
+  }
+  function security() {
+    return `${head('Security', 'Keep your account — and your birth plan — safe.')}
+    <div class="panel"><h3>Change password</h3><form id="pwf" class="form-grid" style="margin-top:12px" novalidate>
+      <div class="field"><label for="pw-cur">Current password</label><input class="input" id="pw-cur" type="password" autocomplete="current-password"></div>
+      <div class="field"><label for="pw-new">New password</label><input class="input" id="pw-new" type="password" autocomplete="new-password"><span class="hint">At least 10 characters.</span></div>
+      <div class="full"><button class="btn btn-sm">Update password</button></div></form>
+      <p class="xs muted" style="margin:12px 0 0">${DHAuth.mode === 'server' ? 'Changing your password signs you out of other devices.' : 'Browser-only demo mode.'}</p></div>
+    <div class="panel"><div class="panel-head"><h3>Recent activity</h3><span class="chip ok">${icon('shield')} Only you can see this</span></div><div id="act"><p class="muted small">Loading…</p></div></div>`;
+  }
+  function storiesView() {
+    const list = cache.mine || [];
+    return `${head('My stories', 'Share your experience. Stories are reviewed by our team before they appear on the Stories page.')}
+    <div class="panel"><h3>${editing ? 'Edit your story' : 'Share a story'}</h3>
+      <form id="sf" class="stack" style="margin-top:12px" novalidate>
+        <div class="form-grid"><div class="field"><label for="sf-name">Name to show</label><input class="input" id="sf-name" maxlength="60" value="${esc(editing ? editing.name : user.name.split(' ')[0])}"></div>
+        <div class="field"><label for="sf-role">Short description</label><input class="input" id="sf-role" maxlength="80" placeholder="e.g. First-time mom · Queens, NY" value="${esc(editing ? editing.roleLabel : '')}"></div></div>
+        <div class="field"><label for="sf-quote">Your story</label><textarea class="textarea" id="sf-quote" maxlength="600" placeholder="What changed for you?">${esc(editing ? editing.quote : '')}</textarea><span class="hint"><span id="sf-count">${editing ? editing.quote.length : 0}</span>/600 · Please don't include medical details or other people's names.</span></div>
+        ${editing ? '' : '<label class="row" style="gap:10px;align-items:flex-start;font-size:.88rem"><input type="checkbox" id="sf-consent" style="margin-top:4px"><span>I\'m happy for Doula\'s House to publish this story with the name above, and I can edit or remove it any time.</span></label>'}
+        <div class="row"><button class="btn btn-sm">${editing ? 'Save changes' : 'Submit for review'}</button>${editing ? '<button type="button" class="btn btn-ghost btn-sm" data-act="cancel-edit">Cancel</button>' : ''}</div>
+        ${editing ? '<p class="xs muted" style="margin:0">Editing a published story sends it back for a quick review.</p>' : ''}</form></div>
+    <div class="panel"><h3>Your submissions</h3>${list.length ? list.map((t) => `<div class="list-row" style="align-items:flex-start"><div class="grow"><div class="row" style="gap:8px;margin-bottom:6px"><span class="chip ${STATUS[t.status][0]}">${STATUS[t.status][1]}</span><span class="xs muted">${fmt(t.createdAt)}</span></div><div class="small" style="font-family:var(--font-display);font-size:1.05rem;line-height:1.4">“${esc(t.quote)}”</div><div class="xs muted" style="margin-top:6px">${esc(t.name)}${t.roleLabel ? ' · ' + esc(t.roleLabel) : ''}</div></div><div class="row" style="gap:6px"><button class="btn btn-ghost btn-xs" data-act="edit" data-id="${t.id}">Edit</button><button class="btn btn-ghost btn-xs" data-act="del-story" data-id="${t.id}">Delete</button></div></div>`).join('') : '<p class="muted small" style="margin:8px 0 0">You haven\'t shared a story yet.</p>'}</div>`;
+  }
+  function usersView() {
+    const us = cache.users || [];
+    return `${head('Users', 'Staff-only. Change roles or remove accounts.')}<div class="panel"><div class="table-wrap" style="border:0"><table><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Joined</th><th></th></tr></thead><tbody>${us.map((u) => `<tr><td><b>${esc(u.name)}</b></td><td class="small">${esc(u.email)}</td><td>${u.id === user.id ? `<span class="chip gold">${ROLE[u.role]} · you</span>` : `<select class="select" style="min-height:38px;padding:6px 36px 6px 12px;font-size:.84rem;width:auto" data-role-user="${u.id}" aria-label="Role for ${esc(u.name)}">${['mom', 'doula', 'clinician', 'admin'].map((r) => `<option value="${r}" ${u.role === r ? 'selected' : ''}>${ROLE[r]}</option>`).join('')}</select>`}</td><td class="small">${new Date(u.createdAt).toLocaleDateString()}</td><td>${u.id === user.id ? '' : `<button class="btn btn-ghost btn-xs" data-act="del-user" data-id="${u.id}" data-name="${esc(u.name)}">Delete</button>`}</td></tr>`).join('')}</tbody></table></div></div>`;
+  }
+  function moderation() {
+    const p = cache.pending || [], a = cache.approved || [];
+    const row = (t, btns) => `<div class="list-row" style="align-items:flex-start"><div class="grow"><div class="row" style="gap:8px;margin-bottom:6px"><span class="chip ${STATUS[t.status][0]}">${STATUS[t.status][1]}</span>${t.sample ? '<span class="chip">Sample</span>' : ''}<span class="xs muted">${esc(t.name)} · ${esc(t.roleLabel || '')}</span></div><div class="small">“${esc(t.quote)}”</div></div><div class="row" style="gap:6px">${btns}</div></div>`;
+    return `${head('Stories', 'Review submissions before they go live. Replace sample stories with real, consented ones before launch.')}
+    <div class="panel"><div class="panel-head"><h3>Awaiting review</h3><span class="chip ${p.length ? 'warn' : ''}">${p.length}</span></div>${p.length ? p.map((t) => row(t, `<button class="btn btn-xs" data-act="mod" data-st="approved" data-id="${t.id}">Approve</button><button class="btn btn-ghost btn-xs" data-act="mod" data-st="rejected" data-id="${t.id}">Reject</button>`)).join('') : '<p class="muted small" style="margin:8px 0 0">Nothing waiting.</p>'}</div>
+    <div class="panel"><div class="panel-head"><h3>Published</h3><span class="chip">${a.length}</span></div>${a.map((t) => row(t, `<button class="btn btn-ghost btn-xs" data-act="mod" data-st="pending" data-id="${t.id}">Unpublish</button><button class="btn btn-ghost btn-xs" data-act="del-story-admin" data-id="${t.id}">Delete</button>`)).join('')}</div>`;
+  }
+
+  async function render() {
+    nav(); const v = $('#view');
+    try {
+      if (tab === 'stories') cache.mine = await DHApi.listTestimonials({ mine: true });
+      if (tab === 'users') cache.users = await DHApi.adminUsers();
+      if (tab === 'moderation') { cache.pending = await DHApi.listTestimonials({ status: 'pending' }); cache.approved = await DHApi.listTestimonials({}); }
+    } catch (e) { bad(e); }
+    v.innerHTML = { profile, security, stories: storiesView, users: usersView, moderation }[tab]();
+    if (tab === 'security') DHApi.activity().then((a) => { $('#act').innerHTML = `<div class="table-wrap" style="border:0"><table><tbody>${a.map((x) => `<tr><td class="small tabular">${fmt(x.t)}</td><td>${esc(x.event)}</td><td class="xs muted">${esc(x.ip || '')}</td></tr>`).join('')}</tbody></table></div>`; }).catch(bad);
+  }
+
+  /* ---- events ---- */
+  document.addEventListener('click', async (e) => {
+    const t = e.target.closest('[data-tab],[data-act]'); if (!t) return; const d = t.dataset;
+    if (d.tab) { tab = d.tab; editing = null; history.replaceState(null, '', '#' + tab); render(); return; }
+    try {
+      if (d.act === 'signout') { await DHAuth.logout(); location.href = 'index.html'; }
+      else if (d.act === 'delete') {
+        const pw = await confirmBox('Delete your account?', 'This permanently removes your account and data. Enter your password to confirm.', 'Delete forever', true, true);
+        if (pw === null) return; await DHAuth.deleteMe({ password: pw }); toast('Your account was deleted.'); setTimeout(() => (location.href = 'index.html'), 800);
+      }
+      else if (d.act === 'edit') { editing = cache.mine.find((x) => x.id === d.id); render(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+      else if (d.act === 'cancel-edit') { editing = null; render(); }
+      else if (d.act === 'del-story') { if (!(await confirmBox('Delete this story?', 'It will be removed from the site.', 'Delete'))) return; await DHApi.deleteTestimonial(d.id); toast('Story deleted'); render(); }
+      else if (d.act === 'del-story-admin') { if (!(await confirmBox('Delete this story?', 'It will be removed permanently.', 'Delete'))) return; await DHApi.deleteTestimonial(d.id); toast('Story deleted'); render(); }
+      else if (d.act === 'mod') { await DHApi.updateTestimonial(d.id, { status: d.st }); toast(d.st === 'approved' ? 'Story published' : d.st === 'rejected' ? 'Story rejected' : 'Story unpublished'); render(); }
+      else if (d.act === 'del-user') { if (!(await confirmBox('Delete ' + d.name + '?', 'Their account, workspace and stories will be removed.', 'Delete user'))) return; await DHApi.adminDeleteUser(d.id); toast('User deleted'); render(); }
+    } catch (err) { bad(err); }
+  });
+  document.addEventListener('input', (e) => {
+    if (e.target.id === 'pf-email') $('#pf-pw-wrap').hidden = e.target.value.trim().toLowerCase() === user.email;
+    if (e.target.id === 'sf-quote') $('#sf-count').textContent = e.target.value.length;
+  });
+  document.addEventListener('change', async (e) => {
+    if (e.target.dataset.roleUser) { try { await DHApi.adminSetRole(e.target.dataset.roleUser, e.target.value); toast('Role updated'); } catch (err) { bad(err); render(); } }
+  });
+  document.addEventListener('submit', async (e) => {
+    e.preventDefault(); const f = e.target;
+    try {
+      if (f.id === 'pf') {
+        const b = { name: $('#pf-name').value, city: $('#pf-city').value, bio: $('#pf-bio').value, email: $('#pf-email').value, password: $('#pf-pw').value, profile: collectProfile() };
+        user = await DHAuth.updateMe(b); toast('Profile saved'); render();
+      } else if (f.id === 'pwf') {
+        await DHApi.changePassword({ current: $('#pw-cur').value, next: $('#pw-new').value }); toast('Password updated'); f.reset(); render();
+      } else if (f.id === 'sf') {
+        const b = { name: $('#sf-name').value, roleLabel: $('#sf-role').value, quote: $('#sf-quote').value };
+        if (editing) { await DHApi.updateTestimonial(editing.id, b); toast('Story updated — sent for review'); editing = null; }
+        else { b.consent = $('#sf-consent').checked; await DHApi.createTestimonial(b); toast('Thank you! Your story is in review.'); }
+        render();
+      }
+    } catch (err) { bad(err); }
+  });
+
+  DHAuth.ready.then((u) => {
+    if (!u) { location.replace('login.html?next=account.html'); return; }
+    user = u; if (!['profile', 'security', 'stories', 'users', 'moderation'].includes(tab) || (['users', 'moderation'].includes(tab) && u.role !== 'admin')) tab = 'profile';
+    render();
+  });
+  DHAuth.onChange((u) => { if (u) user = u; });
+})();
+</script>
+</body>
+</html>

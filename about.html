@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Us — Doula's House</title>
+<meta name="description" content="Doula's House exists to reduce maternal morbidity and mortality by coordinating care around every mother — before, during and after birth.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .mission { font-family: var(--font-display); font-size: clamp(1.7rem, 3.6vw, 2.9rem); line-height: 1.25; max-width: 24ch; margin: 0 auto; text-align: center; }
+  .mission em { color: var(--umber); }
+  .stat-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s6); }
+  @media (max-width: 960px) { .stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .stat-grid { grid-template-columns: 1fr; } }
+  .stat .num small { font-size: .38em; letter-spacing: 0; color: #cbbfae; margin-left: 4px; }
+  .timeline-bar { display: flex; height: 54px; border-radius: var(--r-pill); overflow: hidden; margin-top: var(--s5); font-size: .78rem; font-weight: 700; }
+  .timeline-bar span { display: grid; place-items: center; text-align: center; padding: 0 8px; }
+  .tb1 { flex: 21.6; background: var(--mocha); color: var(--cream); } .tb2 { flex: 25.2; background: var(--gold); color: var(--ink); } .tb3 { flex: 53.3; background: var(--camel); color: var(--ink); }
+  .tb-labels { display: flex; margin-top: 8px; font-size: .74rem; color: #cbbfae; }
+  .tb-labels span:nth-child(1) { flex: 21.6; } .tb-labels span:nth-child(2) { flex: 25.2; } .tb-labels span:nth-child(3) { flex: 53.3; }
+  .gap-card { display: grid; gap: 14px; }
+  .gap-card .fix { margin-top: 6px; padding-top: 14px; border-top: 1px dashed var(--line); font-size: .92rem; }
+  .gap-card .fix b { color: var(--umber); }
+  .pillars { display: grid; gap: 0; counter-reset: p; }
+  .pillar { display: grid; grid-template-columns: 76px 1fr auto; gap: 24px; align-items: center; padding: 28px 0; border-top: 1px solid var(--line); }
+  .pillar:last-child { border-bottom: 1px solid var(--line); }
+  .pillar::before { counter-increment: p; content: counter(p, decimal-leading-zero); font-family: var(--font-display); font-style: italic; font-size: 2.6rem; color: var(--gold); line-height: 1; }
+  .pillar h3 { margin-bottom: 6px; }
+  .pillar p { margin: 0; color: var(--ink-2); max-width: 60ch; }
+  @media (max-width: 720px) { .pillar { grid-template-columns: 52px 1fr; } .pillar .link-arrow { grid-column: 2; justify-self: start; } .pillar::before { font-size: 2rem; } }
+  .src-list { columns: 2; column-gap: var(--s7); font-size: .88rem; padding-left: 1.1em; }
+  .src-list li { margin-bottom: 10px; break-inside: avoid; }
+  @media (max-width: 720px) { .src-list { columns: 1; } }
+</style>
+</head>
+<body data-page="about">
+<div id="site-header"></div>
+<main id="main">
+
+<section class="page-hero bg-cream">
+  <div class="orn orn-tr"></div><div class="orn orn-bl"></div>
+  <div class="container split">
+    <div>
+      <span class="eyebrow">About us</span>
+      <h1>Coordinated care is how we <em>close the gap.</em></h1>
+      <p class="lead">Too many mothers are lost, or nearly lost, in the spaces between appointments, between providers, and between birth and recovery. Doula's House exists to close those spaces — so every mother is supported, heard and followed up with.</p>
+      <div class="row" style="margin-top:var(--s6)"><a class="btn" href="#approach">Our approach</a><a class="btn btn-ghost" href="stories.html">Read stories</a></div>
+    </div>
+    <div class="arch-photo"><img src="assets/portrait-front.jpg" alt="A pregnant woman in a camel dress holding her belly" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="eyebrow center" style="margin-bottom:var(--s5)">Our mission</p>
+    <p class="mission reveal">To reduce maternal <em>morbidity and mortality</em> by putting every mother at the centre of a care team that shares one plan, speaks to each other, and stays with her through the fourth trimester.</p>
+  </div>
+</section>
+
+<section class="section bg-mocha-deep" id="gap">
+  <div class="orn orn-tr gold" style="opacity:.5"></div>
+  <div class="container">
+    <div class="section-head reveal"><span class="eyebrow" style="color:var(--camel)">The gap, in numbers</span><h2>This is a coordination problem as much as a clinical one.</h2><p class="lead">Most pregnancy-related deaths are preventable, and a large share happen after the baby is born — when care is least connected.</p></div>
+    <div class="stat-grid reveal">
+      <div class="stat"><div class="num">18.6<small>/100k</small></div><p>U.S. maternal mortality rate in 2023, down from 22.3 in 2022.</p><cite>NCHS</cite></div>
+      <div class="stat"><div class="num">3.5×</div><p>Black women's maternal mortality rate (50.3) compared with white women's (14.5) per 100,000 live births, 2023.</p><cite>NCHS</cite></div>
+      <div class="stat"><div class="num">84%</div><p>of pregnancy-related deaths reviewed in 36 states (2017–2019) were determined preventable.</p><cite>CDC</cite></div>
+      <div class="stat"><div class="num">53%</div><p>of those deaths happened between one week and one year after pregnancy ended.</p><cite>CDC</cite></div>
+    </div>
+    <div class="reveal" style="margin-top:var(--s8)">
+      <b class="small" style="color:#eadfcb">When pregnancy-related deaths occurred (36 states, 2017–2019)</b>
+      <div class="timeline-bar" role="img" aria-label="22% during pregnancy, 25% within a week of delivery, 53% from one week to one year after"><span class="tb1">22%</span><span class="tb2">25%</span><span class="tb3">53%</span></div>
+      <div class="tb-labels"><span>During pregnancy</span><span>Day of birth – 1 wk</span><span>1 week – 1 year postpartum</span></div>
+      <p class="muted small" style="margin:var(--s5) 0 0;max-width:70ch">Beyond deaths, an estimated 50,000 or more women a year in the U.S. experience severe maternal morbidity — life-threatening complications such as hemorrhage, sepsis or organ failure. Counts vary by definition and year.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal"><span class="eyebrow">Where care breaks down</span><h2>Four gaps we're built to close</h2></div>
+    <div class="grid g2">
+      <article class="card gap-card reveal"><div class="icon-badge" data-icon="file"></div><h3>Plans that don't travel</h3><p>A birth plan lives on a printout. A doula who knows exactly what a mother wants sits outside the medical record. The delivery team meets the plan — and often the mother — for the first time in labor.</p><div class="fix"><b>How we respond:</b> one structured plan, shared section by section with the whole team, before the due date.</div></article>
+      <article class="card gap-card reveal"><div class="icon-badge" data-icon="message"></div><h3>Concerns that aren't heard</h3><p>When a mother says something feels wrong, the response depends on whether anyone is listening — and whether anyone knows what she asked for. Many mothers, and Black mothers in particular, describe not being listened to.</p><div class="fix"><b>How we respond:</b> an explicit advocacy &amp; escalation section, a direct line between doula and clinician, and a team aligned on how to respond.</div></article>
+      <article class="card gap-card reveal"><div class="icon-badge" data-icon="moon"></div><h3>The postpartum cliff</h3><p>Visits taper off just when risk is high: more than half of pregnancy-related deaths happen after the first week. Warning signs get missed at home, in the night, between appointments.</p><div class="fix"><b>How we respond:</b> postpartum plans, doula visits and clinician check-ins built into the same shared plan — plus night-nurse support.</div></article>
+      <article class="card gap-card reveal"><div class="icon-badge" data-icon="dollar"></div><h3>Support that costs too much</h3><p>Doula coverage is growing but patchy; billing is hard; overnight newborn care is out of reach for many families. The mothers who'd benefit most are least able to pay.</p><div class="fix"><b>How we respond:</b> insurance billing for doulas, and scholarships funded by our merch store for mothers and aspiring doulas.</div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-cream" id="approach">
+  <div class="orn orn-wave"></div>
+  <div class="container">
+    <div class="section-head left reveal"><span class="eyebrow">Our approach</span><h2>Five commitments</h2><p class="lead">Coordination isn't a feature. It's the whole product.</p></div>
+    <div class="pillars">
+      <div class="pillar reveal"><div><h3>One shared plan</h3><p>A structured, plain-language birth plan the mother owns and controls — shared with exactly the people she chooses, with a full audit trail.</p></div><a class="link-arrow" href="families.html">For families <span data-icon="arrow"></span></a></div>
+      <div class="pillar reveal"><div><h3>Continuous support</h3><p>Doulas as a recognised part of the care team — before, during and after birth — with secure messaging and a clear role alongside clinicians.</p></div><a class="link-arrow" href="doulas.html">For doulas <span data-icon="arrow"></span></a></div>
+      <div class="pillar reveal"><div><h3>An aligned team</h3><p>Doula-aligned practices and hospitals commit to five visible practices: access, plan review, escalation, postpartum hand-off and respectful care.</p></div><a class="link-arrow" href="care-teams.html#alignment">For care teams <span data-icon="arrow"></span></a></div>
+      <div class="pillar reveal"><div><h3>Postpartum follow-through</h3><p>The fourth trimester is part of the plan from the start: visits, check-ins, warning signs and who to call.</p></div><a class="link-arrow" href="families.html#postpartum">Postpartum <span data-icon="arrow"></span></a></div>
+      <div class="pillar reveal"><div><h3>Funded access</h3><p>Insurance billing where coverage exists; scholarships where it doesn't — for doula care, night nurses, baby preparation and doula training.</p></div><a class="link-arrow" href="shop.html#scholarships">Scholarships <span data-icon="arrow"></span></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <div class="stack reveal">
+      <span class="eyebrow">What the evidence says — and doesn't</span>
+      <h2>Support works. We'll measure our own impact.</h2>
+      <p class="lead">A Cochrane review of 21 trials (14,369 women) found continuous support during labor increased the chance of a spontaneous vaginal birth (risk ratio 1.08) and found no evidence of harm, though the certainty of the evidence was rated low.</p>
+      <p>We're careful about what we claim. Software alone doesn't change maternal mortality; coordination, continuous support and timely escalation are the levers the evidence points to. We'll track our own results, disaggregated by race, ethnicity and coverage, and publish what we learn — including what doesn't work.</p>
+    </div>
+    <div class="card reveal">
+      <h3>Measures we commit to tracking</h3>
+      <div class="table-wrap" style="margin-top:14px"><table class="mini-table"><tbody>
+        <tr><td>Plans shared with the full care team by 36 weeks</td></tr>
+        <tr><td>Time from a raised concern to a documented clinical response</td></tr>
+        <tr><td>Postpartum contact within 7 days and within 6 weeks</td></tr>
+        <tr><td>Doula claims paid on first submission</td></tr>
+        <tr><td>Scholarships awarded, by community and need</td></tr>
+        <tr><td>All of the above, broken down by race, ethnicity and insurance</td></tr>
+      </tbody></table></div>
+      <p class="xs muted" style="margin:12px 0 0">Targets, not results: the product is a prototype and has no outcomes data yet.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-mocha-deep">
+  <div class="container">
+    <div class="section-head reveal"><span class="eyebrow" style="color:var(--camel)">What we believe</span><h2>Our values</h2></div>
+    <div class="grid g4">
+      <div class="guard reveal" style="grid-template-columns:1fr"><div><h4 style="color:var(--camel)">Mothers lead</h4><p>Her plan, her consent, her pace. Everything starts there.</p></div></div>
+      <div class="guard reveal" style="grid-template-columns:1fr"><div><h4 style="color:var(--camel)">Equity first</h4><p>We design for the mothers the system serves least well, and measure whether it works for them.</p></div></div>
+      <div class="guard reveal" style="grid-template-columns:1fr"><div><h4 style="color:var(--camel)">Privacy is dignity</h4><p>Health information is shared only with consent, only as needed, and always logged.</p></div></div>
+      <div class="guard reveal" style="grid-template-columns:1fr"><div><h4 style="color:var(--camel)">Humble with evidence</h4><p>We say what we know, what we don't, and what we're testing.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight" id="sources">
+  <div class="container">
+    <h3 class="h3" style="margin-bottom:var(--s4)">Sources</h3>
+    <ol class="src-list">
+      <li>Hoyert DL. <a href="https://www.cdc.gov/nchs/data/hestat/maternal-mortality/2023/maternal-mortality-rates-2023.htm" rel="noopener">Maternal Mortality Rates in the United States, 2023</a>. NCHS Health E-Stat, 2025.</li>
+      <li>CDC. <a href="https://archive.cdc.gov/www_cdc_gov/maternal-mortality/php/data-research/mmrc-2017-2019.html" rel="noopener">Pregnancy-Related Deaths: Data From Maternal Mortality Review Committees in 36 U.S. States, 2017–2019</a>.</li>
+      <li>Bohren MA, et al. <a href="https://www.cochrane.org/evidence/CD003766/continuous-support-women-during-childbirth" rel="noopener">Continuous support for women during childbirth</a>. Cochrane Database Syst Rev, 2017.</li>
+      <li>Declercq E, Zephyrin L. <a href="https://www.commonwealthfund.org/publications/issue-briefs/2021/oct/severe-maternal-morbidity-united-states-primer" rel="noopener">Severe Maternal Morbidity in the United States: A Primer</a>. Commonwealth Fund, 2021.</li>
+    </ol>
+    <p class="xs muted" style="margin-top:12px">Figures are as published at the time of writing; please re-check against the latest releases.</p>
+  </div>
+</section>
+
+<section class="section center" style="overflow:hidden;background:linear-gradient(180deg,var(--cream),var(--sand))">
+  <div class="orn orn-tr"></div><div class="orn orn-bl"></div>
+  <div class="container stack-lg reveal">
+    <span data-figure="logo-figure" style="display:block;width:92px;margin:0 auto"></span>
+    <h2>Be part of the circle.</h2>
+    <div class="row" style="justify-content:center"><a class="btn" href="login.html#signup">Create an account</a><a class="btn btn-ghost" href="shop.html">Shop &amp; give</a></div>
+  </div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="js/site.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/merch.js"></script>
+</body>
+</html>

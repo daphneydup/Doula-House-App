@@ -1,0 +1,13 @@
+{
+  "name": "doulas-house",
+  "version": "0.3.0",
+  "private": true,
+  "description": "Doula's House prototype: static site + zero-dependency dev server with accounts and CRUD",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "node server/test-care.js && node server/test-api.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

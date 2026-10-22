@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insurance &amp; Doula Coverage — Doula's House</title>
+<meta name="description" content="Which major insurers support doula services — Medicaid, UnitedHealthcare, Anthem, EmblemHealth and more — with honest status, sources and what to ask your plan.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .cov-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s5); } @media (max-width: 980px) { .cov-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } } @media (max-width: 620px) { .cov-grid { grid-template-columns: 1fr; } }
+  .ins { background: #fff; border: 1.5px solid var(--line-soft); border-radius: var(--r-lg); padding: 22px; display: grid; gap: 12px; align-content: start; position: relative; }
+  .ins[data-s="yes"] { border-top: 5px solid var(--ok); } .ins[data-s="some"] { border-top: 5px solid var(--info); } .ins[data-s="varies"] { border-top: 5px solid var(--camel); }
+  .ins-top { display: flex; gap: 14px; align-items: center; }
+  .mono { width: 48px; height: 48px; border-radius: 14px; background: var(--cream); color: var(--umber); display: grid; place-items: center; font-family: var(--font-display); font-weight: 500; font-size: 1.1rem; letter-spacing: -.02em; flex: none; }
+  .ins h3 { font-size: 1.25rem; line-height: 1.15; } .ins .kind { font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 650; }
+  .ins .hl { font-family: var(--font-display); font-size: 1.1rem; line-height: 1.3; margin: 0; } .ins p { margin: 0; font-size: .9rem; color: var(--ink-2); }
+  .ins .ask { background: var(--cream); border-radius: var(--r-sm); padding: 10px 12px; font-size: .82rem; } .ins .ask b { display: block; font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+  .ins .src { font-size: .74rem; color: var(--muted); }
+  .checker { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--s7); align-items: start; } @media (max-width: 860px) { .checker { grid-template-columns: 1fr; } }
+  .verdict { border-radius: var(--r-lg); padding: 24px; display: grid; gap: 10px; border: 1.5px solid transparent; } .verdict h3 { font-size: 1.5rem; } .verdict p { margin: 0; }
+  .verdict.likely { background: var(--ok-bg); color: var(--ok); } .verdict.possible { background: var(--info-bg); color: var(--info); } .verdict.unknown { background: var(--warn-bg); color: var(--warn); }
+  .verdict .ask { background: rgba(255,255,255,.7); color: var(--ink); border-radius: var(--r-sm); padding: 12px 14px; font-size: .9rem; } .verdict .ask b { display: block; font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+  .legend { display: flex; gap: 10px; flex-wrap: wrap; margin-top: var(--s5); }
+  .steps { counter-reset: s; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s5); } @media (max-width: 860px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } } @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+  .steps > div { border-top: 2px solid var(--camel); padding-top: 14px; } .steps > div::before { counter-increment: s; content: "0" counter(s); font-family: var(--font-display); font-style: italic; color: var(--clay); font-size: 1.2rem; } .steps h4 { margin: 6px 0; font-size: 1.15rem; } .steps p { margin: 0; font-size: .9rem; color: var(--ink-2); }
+  .priv { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; } @media (max-width: 760px) { .priv { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .priv div { background: #fff; border: 1px solid var(--line-soft); border-radius: var(--r-md); padding: 14px 10px; text-align: center; } .priv b { display: block; font-family: var(--font-display); font-size: 1.8rem; line-height: 1; } .priv span { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 650; }
+  .priv .in b { color: var(--ok); } .priv .pend b { color: var(--info); }
+</style>
+</head>
+<body data-page="coverage">
+<div id="site-header"></div>
+<main id="main">
+
+<section class="page-hero bg-mocha-deep">
+  <div class="orn orn-tr gold" style="opacity:.6"></div>
+  <div class="container">
+    <span class="eyebrow" style="color:var(--camel)">Insurance &amp; coverage</span>
+    <h1>Which insurers pay for <em>doula care?</em></h1>
+    <p class="lead" style="max-width:60ch">More plans now cover doula services than ever — mostly through Medicaid, and increasingly through employers. Here is what we know, how sure we are, and exactly what to ask your plan.</p>
+    <div class="row" style="margin-top:var(--s6)"><a class="btn btn-light" href="#check">Check my plan</a><a class="btn btn-ghost-light" href="#insurers">See all insurers</a></div>
+    <div class="legend" id="legend"></div>
+  </div>
+</section>
+
+<section class="section" id="check">
+  <div class="container checker">
+    <div>
+      <span class="eyebrow">Coverage check</span>
+      <h2 style="margin:14px 0 14px">Is my plan likely to cover a doula?</h2>
+      <p class="lead">Pick your insurer and state. We’ll tell you what we know, what we don’t, and the exact question to ask.</p>
+      <div class="form-grid" style="margin-top:var(--s5);grid-template-columns:repeat(2,minmax(0,1fr))">
+        <div class="field"><label for="c-ins">Insurer</label><select class="select" id="c-ins"></select></div>
+        <div class="field"><label for="c-state">State</label><select class="select" id="c-state"></select></div>
+      </div>
+    </div>
+    <div id="verdict" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="section bg-cream" id="insurers">
+  <div class="container">
+    <div class="section-head left"><span class="eyebrow">Major insurers</span><h2>What each one says about doulas</h2><p class="lead">Status reflects public reporting, reviewed <b id="reviewed"></b>. “Varies” means we found no standard benefit — not that you’re uncovered.</p></div>
+    <div class="row" style="margin-bottom:var(--s5)" id="filters"></div>
+    <div class="cov-grid" id="ins-grid"></div>
+  </div>
+</section>
+
+<section class="section" id="private">
+  <div class="container">
+    <div class="section-head left"><span class="eyebrow">Beyond Medicaid</span><h2>Private insurance is catching up, state by state</h2><p class="lead">A few states now require some private plans to cover doula services. Self-funded employer plans can be exempt from state rules.</p></div>
+    <div class="priv" id="priv"></div>
+  </div>
+</section>
+
+<section class="section bg-sand" id="howto">
+  <div class="container">
+    <div class="section-head left"><span class="eyebrow">How to confirm</span><h2>Four steps before the first visit</h2></div>
+    <div class="steps">
+      <div><h4>Call the number on your card</h4><p>Ask: “Is a doula a covered benefit, and under which billing codes?”</p></div>
+      <div><h4>Ask about the recommendation</h4><p>Many plans need a recommendation from a licensed provider. Doula’s House can request it from your care team in one tap.</p></div>
+      <div><h4>Check your doula is enrolled</h4><p>Coverage usually requires a credentialed, in-network or enrolled doula.</p></div>
+      <div><h4>Write it down</h4><p>Note the date, the person and a reference number. It settles disputes later.</p></div>
+    </div>
+    <div class="alert cream" style="margin-top:var(--s7)"><span data-icon="info"></span><span id="disc"></span></div>
+    <p class="small muted" style="margin-top:var(--s5)">Sources</p>
+    <ul class="small" id="srcs" style="margin:6px 0 0;padding-left:1.1em"></ul>
+    <p class="small" style="margin-top:var(--s5)">Is your plan listed wrong, or missing? <a href="mailto:hello@doulashouse.com?subject=Coverage%20update">Tell us</a> — we review every report.</p>
+  </div>
+</section>
+
+</main>
+<div id="site-footer"></div>
+<script src="js/site.js"></script>
+<script src="js/coverage-data.js"></script>
+<script src="js/auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const C = window.DHCoverage, $ = (s) => document.querySelector(s), esc = DH.esc;
+  $('#reviewed').textContent = new Date(C.REVIEWED + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  $('#disc').innerHTML = '<b>Please note:</b> ' + esc(C.DISCLAIMER);
+  $('#legend').innerHTML = Object.values(C.LABEL).map((l) => `<span class="chip ${l.cls}">${esc(l.t)}</span>`).join('');
+
+  const src = (ids) => ids.map((id) => C.SOURCES[id]).filter(Boolean);
+  const srcLine = (ids) => src(ids).map((s) => s.u ? `<a href="${s.u}" target="_blank" rel="noopener">${esc(s.t)}</a>` : esc(s.t)).join(' · ');
+
+  /* checker */
+  $('#c-ins').innerHTML = C.INSURERS.map((i) => `<option value="${i.id}">${esc(i.name)}</option>`).join('');
+  $('#c-state').innerHTML = '<option value="">Choose a state…</option>' + Object.entries(C.STATES).map(([k, v]) => `<option value="${k}">${v}</option>`).join('');
+  const preset = new URLSearchParams(location.search);
+  if (preset.get('insurer')) $('#c-ins').value = preset.get('insurer');
+  if (preset.get('state')) $('#c-state').value = preset.get('state');
+  function verdict() {
+    const r = C.check({ insurer: $('#c-ins').value, state: $('#c-state').value });
+    const ic = r.level === 'likely' ? 'check' : r.level === 'possible' ? 'info' : 'alert';
+    $('#verdict').innerHTML = `<div class="verdict ${r.level}"><span class="chip ${r.level === 'likely' ? 'ok' : r.level === 'possible' ? 'info' : 'warn'}" style="width:max-content">${DH.icon(ic)}${r.level === 'likely' ? 'Likely' : r.level === 'possible' ? 'Possible' : 'Unconfirmed'}</span><h3>${esc(r.title)}</h3><p>${esc(r.body)}</p>${r.ask ? `<div class="ask"><b>Ask your plan</b>${esc(r.ask)}</div>` : ''}${r.src.length ? `<p class="small" style="color:inherit;opacity:.85">Based on: ${srcLine(r.src)}</p>` : ''}<p class="small" style="color:inherit;opacity:.85">${esc(C.DISCLAIMER)}</p></div>`;
+  }
+  $('#c-ins').addEventListener('change', verdict); $('#c-state').addEventListener('change', verdict); verdict();
+
+  /* insurers */
+  let filter = 'all';
+  function grid() {
+    $('#filters').innerHTML = [['all', 'All'], ['yes', 'Supports doula services'], ['some', 'Select plans or states'], ['varies', 'Varies']].map(([k, t]) => `<button class="chip" aria-pressed="${filter === k}" data-f="${k}">${t}</button>`).join('');
+    $('#ins-grid').innerHTML = C.INSURERS.filter((i) => filter === 'all' || i.status === filter).map((i) => { const l = C.LABEL[i.status];
+      return `<article class="ins" data-s="${i.status}"><div class="ins-top"><span class="mono" aria-hidden="true">${esc(i.short)}</span><div><h3>${esc(i.name)}</h3><div class="kind">${esc(i.kind)}</div></div></div>
+      <span class="chip ${l.cls}" style="width:max-content">${DH.icon(i.status === 'yes' ? 'check' : i.status === 'some' ? 'info' : 'alert')}${esc(l.t)}</span>
+      <p class="hl">${esc(i.headline)}</p><p>${esc(i.detail)}</p><div class="ask"><b>Ask your plan</b>${esc(i.ask)}</div>
+      <div class="src">${i.src.length ? 'Based on: ' + srcLine(i.src) : 'No published benefit found in our review.'}</div>
+      <button class="btn btn-ghost btn-sm" data-check="${i.id}">Check ${esc(i.short === 'MC' ? 'my state' : 'this plan')}</button></article>`; }).join('');
+  }
+  grid();
+  document.addEventListener('click', (e) => {
+    const f = e.target.closest('[data-f]'); if (f) { filter = f.dataset.f; grid(); return; }
+    const c = e.target.closest('[data-check]'); if (c) { $('#c-ins').value = c.dataset.check; verdict(); $('#check').scrollIntoView({ behavior: 'smooth' }); }
+  });
+
+  /* private mandates */
+  $('#priv').innerHTML = Object.entries(C.PRIVATE_STATES).map(([k, v]) => `<div class="${v.s === 'in effect' ? 'in' : 'pend'}"><b>${k}</b><span>${esc(C.STATES[k])}</span><br><span class="muted" style="text-transform:none;letter-spacing:0;font-weight:500">${esc(v.s)}</span></div>`).join('');
+
+  /* sources */
+  $('#srcs').innerHTML = Object.values(C.SOURCES).map((s) => `<li>${s.u ? `<a href="${s.u}" target="_blank" rel="noopener">${esc(s.t)}</a>` : esc(s.t)}</li>`).join('') + '<li>Where there is no link, the cited publication is named so you can find it; verify before relying on it.</li>';
+});
+</script>
+</body>
+</html>

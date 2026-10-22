@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stories — Doula's House</title>
+<meta name="description" content="Stories from families, doulas and clinicians building coordinated birth care together.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="stories">
+<div id="site-header"></div>
+<main id="main">
+
+<section class="page-hero bg-cream">
+  <div class="orn orn-tr"></div>
+  <div class="container center" style="max-width:860px">
+    <span class="eyebrow">Stories from the circle</span>
+    <h1>Better births are <em>coordinated</em> births.</h1>
+    <p class="lead" style="margin-inline:auto">Families, doulas and clinicians on what changes when everyone is working from the same plan.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="row-between" style="margin-bottom:var(--s6)">
+      <div class="filter-bar" role="group" aria-label="Filter stories" style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="chip" aria-pressed="true" data-f="all">All</button>
+        <button class="chip" aria-pressed="false" data-f="families">Families</button>
+        <button class="chip" aria-pressed="false" data-f="doulas">Doulas</button>
+        <button class="chip" aria-pressed="false" data-f="clinicians">Clinicians</button>
+      </div>
+      <span class="story-note" id="sample-note" hidden><span data-icon="info"></span>Sample stories shown for the prototype — to be replaced with real, consented stories.</span>
+    </div>
+    <div class="story-grid" id="grid" aria-live="polite"><p class="muted">Loading stories…</p></div>
+  </div>
+</section>
+
+<section class="section bg-mocha-deep" id="share">
+  <div class="orn orn-tr gold" style="opacity:.5"></div>
+  <div class="container split">
+    <div class="stack">
+      <span class="eyebrow" style="color:var(--camel)">Share yours</span>
+      <h2>Your story can change someone's birth.</h2>
+      <p class="lead">Tell us what coordinated care meant for you. Stories are reviewed by our team before they're published, and you can edit or remove yours at any time.</p>
+      <ul class="check-list"><li><span data-icon="check"></span><span>Use a first name or initials — your choice</span></li><li><span data-icon="check"></span><span>Please leave out medical details and other people's names</span></li><li><span data-icon="check"></span><span>Manage your stories from your account</span></li></ul>
+    </div>
+    <div class="card" style="background:var(--paper);color:var(--ink)" id="share-card"></div>
+  </div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="js/site.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/merch.js"></script>
+<script>
+(function () {
+  const $ = (s) => document.querySelector(s);
+  let all = [], f = 'all';
+  function draw() {
+    const list = all.filter((t) => f === 'all' || t.audience === f);
+    $('#grid').innerHTML = list.length ? list.map((t, i) => DH.storyCard(t).replace('class="story-card"', `class="story-card${i === 0 && f === 'all' ? ' featured' : ''}"`)).join('') : '<p class="muted">No stories here yet — be the first to share one.</p>';
+    $('#sample-note').hidden = !all.some((t) => t.sample);
+    document.querySelectorAll('[data-f]').forEach((b) => b.setAttribute('aria-pressed', b.dataset.f === f));
+  }
+  document.querySelectorAll('[data-f]').forEach((b) => b.addEventListener('click', () => { f = b.dataset.f; draw(); }));
+
+  function shareCard(u) {
+    const c = $('#share-card');
+    if (!u) { c.innerHTML = `<h3 class="h3">Sign in to share</h3><p class="muted">Creating an account takes a minute and lets you edit or remove your story later.</p><div class="row" style="margin-top:20px"><a class="btn" href="login.html?next=stories.html#signup">Create account</a><a class="btn btn-ghost" href="login.html?next=stories.html">Sign in</a></div>`; return; }
+    c.innerHTML = `<h3 class="h3">Share your story</h3><form id="sf" class="stack" style="margin-top:14px" novalidate>
+      <div class="form-grid"><div class="field"><label for="sf-name">Name to show</label><input class="input" id="sf-name" maxlength="60" value="${DH.esc(u.name.split(' ')[0])}"></div>
+      <div class="field"><label for="sf-role">Short description</label><input class="input" id="sf-role" maxlength="80" placeholder="e.g. First-time mom · Queens, NY"></div></div>
+      <div class="field"><label for="sf-quote">Your story</label><textarea class="textarea" id="sf-quote" maxlength="600" placeholder="What changed for you?"></textarea><span class="hint"><span id="sf-count">0</span>/600</span></div>
+      <label class="row" style="gap:10px;align-items:flex-start;font-size:.88rem"><input type="checkbox" id="sf-consent" style="margin-top:4px"><span>I'm happy for Doula's House to publish this with the name above, and I can edit or remove it any time.</span></label>
+      <div class="alert bad form-error" id="sf-err" style="display:none" role="alert"><span data-icon="alert"></span><span></span></div>
+      <button class="btn" style="width:100%">Submit for review</button></form>`;
+    $('#sf-quote').addEventListener('input', (e) => { $('#sf-count').textContent = e.target.value.length; });
+    $('#sf').addEventListener('submit', async (e) => {
+      e.preventDefault(); const err = $('#sf-err'); err.style.display = 'none';
+      try { await DHApi.createTestimonial({ name: $('#sf-name').value, roleLabel: $('#sf-role').value, quote: $('#sf-quote').value, consent: $('#sf-consent').checked });
+        c.innerHTML = `<div class="center stack"><div class="icon-badge" style="margin:0 auto">${DH.icon('check')}</div><h3 class="h3">Thank you</h3><p class="muted">Your story is in review. We'll publish it once our team has had a look — you can edit or remove it from your account.</p><a class="btn btn-ghost btn-sm" href="account.html#stories">Manage my stories</a></div>`;
+      } catch (ex) { err.style.display = 'flex'; err.lastElementChild.textContent = ex.message; }
+    });
+  }
+  DHAuth.ready.then(async (u) => { shareCard(u); try { all = await DHApi.listTestimonials(); } catch (e) { all = []; } draw(); });
+})();
+</script>
+</body>
+</html>

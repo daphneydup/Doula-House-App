@@ -1,0 +1,4 @@
+{
+  "_note": "Development-only. The demo password is a throwaway test value for local use. Delete this file (and DEMO_ACCOUNTS in js/auth.js) before any real deployment. People and the shared scenario are defined in js/care-core.js (demoPeople / seedDemo).",
+  "demoPassword": "Welcome-Home-2026"
+}

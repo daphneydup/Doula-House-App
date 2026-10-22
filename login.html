@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in — Doula's House</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .auth-wrap { display: grid; grid-template-columns: .9fr 1.1fr; min-height: calc(100vh - var(--header-h)); }
+  .auth-side { position: relative; background: var(--mocha-3); color: var(--cream); display: grid; place-items: center; padding: 56px 40px; overflow: hidden; background-image: radial-gradient(700px 500px at 80% 0, rgba(201,164,106,.25), transparent 60%); }
+  .auth-side .arch-photo { max-width: 300px; }
+  .auth-side blockquote { margin: 28px 0 0; font-family: var(--font-display); font-size: 1.5rem; line-height: 1.35; max-width: 26ch; text-align: center; }
+  .auth-main { display: grid; place-items: center; padding: 48px var(--gutter); }
+  .auth-card { width: min(520px, 100%); }
+  .auth-card h1 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 8px; }
+  .role-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .role-card { position: relative; }
+  .role-card input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+  .role-card span { display: grid; gap: 6px; justify-items: center; text-align: center; padding: 16px 8px; border-radius: var(--r-md); border: 1.5px solid var(--line); background: #fff; font-size: .82rem; font-weight: 600; transition: .15s; }
+  .role-card svg { width: 22px; height: 22px; color: var(--gold); }
+  .role-card input:checked + span { border-color: var(--ink); background: var(--cream); box-shadow: 0 0 0 1px var(--ink) inset; }
+  .role-card input:focus-visible + span { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .pw-wrap { position: relative; }
+  .pw-wrap .input { padding-right: 76px; }
+  .pw-toggle { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); height: 34px; border: 0; background: none; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--umber); padding: 0 10px; border-radius: var(--r-pill); }
+  .pw-meter { height: 5px; border-radius: 3px; background: var(--sand); overflow: hidden; }
+  .pw-meter i { display: block; height: 100%; width: 0; background: var(--bad); transition: width .2s, background .2s; }
+  .form-error { display: none; }
+  .form-error.show { display: flex; }
+  @media (max-width: 900px) { .auth-wrap { grid-template-columns: 1fr; } .auth-side { display: none; } }
+</style>
+</head>
+<body data-page="login">
+<div id="site-header"></div>
+<main id="main" class="auth-wrap">
+  <aside class="auth-side">
+    <div class="orn orn-tr gold" style="opacity:.6"></div><div class="orn orn-bl gold" style="opacity:.6"></div>
+    <div style="position:relative;z-index:1;display:grid;justify-items:center">
+      <div class="arch-photo"><img src="assets/portrait-front.jpg" alt="" loading="lazy"></div>
+      <blockquote>“Your plan. Your people. Your pace.”</blockquote>
+    </div>
+  </aside>
+  <section class="auth-main">
+    <div class="auth-card stack-lg">
+      <div>
+        <span class="eyebrow">Welcome home</span>
+        <h1 id="auth-title">Sign in</h1>
+        <p class="muted" id="auth-sub">Pick up where you left off.</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Sign in or create account">
+        <button class="tab" role="tab" id="tab-in" aria-selected="true" aria-controls="form-in">Sign in</button>
+        <button class="tab" role="tab" id="tab-up" aria-selected="false" aria-controls="form-up">Create account</button>
+      </div>
+
+      <form id="form-in" class="stack" novalidate>
+        <div class="field"><label for="in-email">Email</label><input class="input" id="in-email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="in-pw">Password</label><div class="pw-wrap"><input class="input" id="in-pw" type="password" autocomplete="current-password" required><button type="button" class="pw-toggle" data-pw="in-pw">Show</button></div></div>
+        <div class="alert bad form-error" id="err-in" role="alert"><span data-icon="alert"></span><span></span></div>
+        <button class="btn" style="width:100%" id="btn-in">Sign in</button>
+      </form>
+
+      <form id="form-up" class="stack" novalidate hidden>
+        <fieldset style="border:0;padding:0;margin:0"><legend class="label" style="margin-bottom:10px">I'm joining as</legend>
+          <div class="role-cards">
+            <label class="role-card"><input type="radio" name="role" value="mom" checked><span><span data-icon="heart"></span>Mom / family</span></label>
+            <label class="role-card"><input type="radio" name="role" value="doula"><span><span data-icon="users"></span>Doula</span></label>
+            <label class="role-card"><input type="radio" name="role" value="clinician"><span><span data-icon="pulse"></span>Clinician</span></label>
+          </div>
+        </fieldset>
+        <div class="form-grid">
+          <div class="field"><label for="up-name">Full name</label><input class="input" id="up-name" autocomplete="name" required></div>
+          <div class="field"><label for="up-city">City &amp; state <span class="muted" style="text-transform:none;letter-spacing:0;font-weight:500">(optional)</span></label><input class="input" id="up-city" autocomplete="address-level2"></div>
+          <div class="field full"><label for="up-email">Email</label><input class="input" id="up-email" type="email" autocomplete="email" required></div>
+          <div class="field full"><label for="up-pw">Password</label><div class="pw-wrap"><input class="input" id="up-pw" type="password" autocomplete="new-password" required aria-describedby="pw-hint"><button type="button" class="pw-toggle" data-pw="up-pw">Show</button></div>
+            <div class="pw-meter" aria-hidden="true"><i id="pw-bar"></i></div><span class="hint" id="pw-hint">At least 10 characters. A few random words works well.</span></div>
+        </div>
+        <label class="row" style="gap:10px;align-items:flex-start;font-size:.88rem"><input type="checkbox" id="up-consent" style="margin-top:4px"><span>I agree to the terms and the <a href="trust.html">privacy principles</a>.</span></label>
+        <div class="alert cream" id="role-note"><span data-icon="info"></span><span>In the live product, doula and clinician credentials are <b>verified by our team</b> before an account can receive shared birth plans. This prototype skips verification.</span></div>
+        <div class="alert bad form-error" id="err-up" role="alert"><span data-icon="alert"></span><span></span></div>
+        <button class="btn" style="width:100%" id="btn-up">Create account</button>
+      </form>
+
+      <div class="card card-cream card-pad-sm" id="demo-box" hidden>
+        <div class="row-between" style="margin-bottom:10px"><b class="small">Try a demo account</b><span class="chip dark">Dev only</span></div>
+        <div class="row" id="demo-btns" style="gap:8px"></div>
+        <p class="xs muted" style="margin:10px 0 0">Fictional people. Remove demo accounts before any real deployment.</p>
+      </div>
+      <p class="xs muted" id="mode-note" style="margin:0"></p>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="js/site.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/merch.js"></script>
+<script>
+(function () {
+  const $ = (s) => document.querySelector(s);
+  const params = new URLSearchParams(location.search);
+  const next = DHAuth.safeNext(params.get('next'), null);
+  const go = (u) => { location.href = next || DHAuth.home(u); };
+
+  function setTab(up) {
+    $('#tab-in').setAttribute('aria-selected', !up); $('#tab-up').setAttribute('aria-selected', up);
+    $('#form-in').hidden = up; $('#form-up').hidden = !up;
+    $('#auth-title').textContent = up ? 'Create your account' : 'Sign in';
+    $('#auth-sub').textContent = up ? 'It takes a minute. You choose who sees what — always.' : 'Pick up where you left off.';
+    history.replaceState(null, '', up ? '#signup' : location.pathname + location.search);
+  }
+  $('#tab-in').onclick = () => setTab(false); $('#tab-up').onclick = () => setTab(true);
+  if (location.hash === '#signup') setTab(true);
+
+  document.querySelectorAll('[data-pw]').forEach((b) => b.addEventListener('click', () => {
+    const i = document.getElementById(b.dataset.pw); const show = i.type === 'password'; i.type = show ? 'text' : 'password'; b.textContent = show ? 'Hide' : 'Show'; }));
+
+  $('#up-pw').addEventListener('input', (e) => {
+    const v = e.target.value; let s = Math.min(v.length / 14, 1) * 60 + (/[A-Z]/.test(v) ? 10 : 0) + (/\d/.test(v) ? 15 : 0) + (/[^\w\s]/.test(v) || /\s/.test(v) ? 15 : 0);
+    const bar = $('#pw-bar'); bar.style.width = Math.min(s, 100) + '%'; bar.style.background = v.length < 10 ? 'var(--bad)' : s < 75 ? 'var(--warn)' : 'var(--ok)'; });
+  document.querySelectorAll('input[name="role"]').forEach((r) => r.addEventListener('change', () => {
+    $('#role-note').style.display = r.value === 'mom' ? 'none' : ''; }));
+  $('#role-note').style.display = 'none';
+
+  function showErr(id, msg) { const e = $(id); e.classList.add('show'); e.lastElementChild.textContent = msg; }
+  const busy = (btn, on, label) => { btn.disabled = on; btn.textContent = on ? 'One moment…' : label; };
+
+  $('#form-in').addEventListener('submit', async (e) => {
+    e.preventDefault(); $('#err-in').classList.remove('show');
+    const email = $('#in-email').value.trim(), password = $('#in-pw').value;
+    if (!email || !password) return showErr('#err-in', 'Please enter your email and password.');
+    busy($('#btn-in'), true);
+    try { go(await DHAuth.login({ email, password })); }
+    catch (err) { showErr('#err-in', err.message); busy($('#btn-in'), false, 'Sign in'); $('#in-pw').select(); }
+  });
+  $('#form-up').addEventListener('submit', async (e) => {
+    e.preventDefault(); $('#err-up').classList.remove('show');
+    const b = { name: $('#up-name').value, email: $('#up-email').value, city: $('#up-city').value, password: $('#up-pw').value, role: document.querySelector('input[name="role"]:checked').value, consent: $('#up-consent').checked };
+    busy($('#btn-up'), true);
+    try { go(await DHAuth.register(b)); }
+    catch (err) { showErr('#err-up', err.message); busy($('#btn-up'), false, 'Create account'); }
+  });
+
+  DHAuth.ready.then((u) => {
+    if (u) { go(u); return; }
+    $('#demo-box').hidden = false;
+    $('#demo-btns').innerHTML = DHAuth.DEMO_ACCOUNTS.map((d, i) => `<button class="btn btn-ghost btn-xs" data-demo="${i}">${d.label}</button>`).join('');
+    $('#demo-btns').addEventListener('click', async (e) => { const b = e.target.closest('[data-demo]'); if (!b) return; const d = DHAuth.DEMO_ACCOUNTS[b.dataset.demo];
+      try { go(await DHAuth.login({ email: d.email, password: d.password })); } catch (err) { showErr('#err-in', err.message); } });
+    $('#mode-note').textContent = DHAuth.mode === 'server'
+      ? 'Secure session: your sign-in uses an HttpOnly cookie and a salted scrypt password hash on the server.'
+      : 'Browser-only demo mode: accounts live in this browser (no server running). Start the dev server with “npm start” for real sessions.';
+  });
+})();
+</script>
+</body>
+</html>

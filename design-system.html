@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design System — Doula's House</title>
+<meta name="description" content="Doula's House design system: colour, type, space, components and motifs — extended from the brand deck.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="design-system">
+<div id="site-header"></div>
+<main id="main">
+<section class="page-hero bg-cream">
+  <div class="orn orn-tr"></div>
+  <div class="container" style="max-width:900px">
+    <span class="eyebrow">Design system · v2</span>
+    <h1>Warm, <em>clinical-grade</em> calm.</h1>
+    <p class="lead">The component library behind the identity: tokens, forms, data and privacy patterns for a care-coordination product. For strategy, the mark, voice and applications, see the <a href="brand.html">full brand identity</a>.</p>
+  </div>
+</section>
+
+<div class="container">
+
+<section class="ds-block" id="principles">
+  <h2>Principles</h2>
+  <div class="grid g3">
+    <div class="card card-cream"><h3>Held, not hurried</h3><p>Generous space, slow reveals, soft shadows. Nothing shouts — except warnings, which are the only red on the page.</p></div>
+    <div class="card card-cream"><h3>Editorial meets clinical</h3><p>Fraunces carries brand emotion; Instrument Sans carries information. Never set data or forms in the serif.</p></div>
+    <div class="card card-cream"><h3>Privacy is visible</h3><p>Locks, consent toggles and audit rows are first-class components, not buried settings.</p></div>
+  </div>
+</section>
+
+<section class="ds-block" id="color">
+  <h2>Colour</h2>
+  <p class="muted">Core and brand colours come straight from the deck's photography and merch. Status colours are muted so they sit in the warm palette.</p>
+  <h3 class="h3" style="margin:var(--s5) 0 var(--s4)">Core &amp; brand</h3>
+  <div class="grid g4" id="sw-brand"></div>
+  <h3 class="h3" style="margin:var(--s6) 0 var(--s4)">Status</h3>
+  <div class="grid g4" id="sw-status"></div>
+  <div class="alert cream" style="margin-top:var(--s5)"><span data-icon="info"></span><span><b>Contrast:</b> body text is Ink on Paper/Cream (≥ 15:1). Clay passes AA on Paper and Cream (4.7:1+). Gold, Honey and Dawn are graphic colours — use Umber or Dawn deep for text. Gold is decorative or ≥ 18px only — use Umber for gold-toned text. Camel text appears only on Mocha backgrounds.</span></div>
+</section>
+
+<section class="ds-block" id="type">
+  <h2>Typography</h2>
+  <div class="ds-demo">
+    <div class="type-row"><code class="tok">Display · Fraunces 350, SOFT 100</code><div class="display" style="font-size:clamp(2.4rem,6vw,4.6rem);line-height:1">Doula’s House</div></div>
+    <div class="type-row"><code class="tok">H2 · sentence case, −25</code><h2>Every birth deserves a whole team</h2></div>
+    <div class="type-row"><code class="tok">H3 · Fraunces 400</code><h3>A birth plan that travels</h3></div>
+    <div class="type-row"><code class="tok">Italic accent · Clay</code><div class="display serif-italic" style="font-size:2.6rem;color:var(--clay)">whole team</div></div>
+    <div class="type-row"><code class="tok">Eyebrow · Instrument Sans 650, .26em</code><span class="eyebrow">Birthing your story</span></div>
+    <div class="type-row"><code class="tok">Lead · Instrument Sans 400, 20px</code><p class="lead" style="margin:0">Doulas have always held mothers through birth — but outside the medical record.</p></div>
+    <div class="type-row"><code class="tok">Body · Instrument Sans 400, 16px</code><p style="margin:0;max-width:60ch">A doula is a trained, non-medical professional who gives continuous emotional, physical and informational support before, during and after birth.</p></div>
+    <div class="type-row"><code class="tok">Slogan · Antonio 700</code><div style="font-family:var(--font-slogan);font-size:3rem;line-height:1;color:var(--terracotta)">DOULAS SAVE LIVES</div></div>
+  </div>
+</section>
+
+<section class="ds-block" id="space">
+  <h2>Space, shape &amp; depth</h2>
+  <div class="grid g3">
+    <div class="ds-demo"><h4 style="margin-bottom:14px">Spacing · 4px base</h4><div class="stack" id="space-demo"></div></div>
+    <div class="ds-demo"><h4 style="margin-bottom:14px">Radii</h4><div class="row" style="gap:14px">
+      <div style="width:64px;height:64px;background:var(--sand);border-radius:var(--r-xs)"></div><div style="width:64px;height:64px;background:var(--sand);border-radius:var(--r-md)"></div><div style="width:64px;height:64px;background:var(--sand);border-radius:var(--r-lg)"></div><div style="width:64px;height:64px;background:var(--sand);border-radius:var(--r-pill)"></div><div style="width:64px;height:64px;background:var(--sand);border-radius:999px 999px 10px 10px"></div></div>
+      <p class="xs muted" style="margin-top:12px">8 · 18 · 28 · pill · arch</p></div>
+    <div class="ds-demo"><h4 style="margin-bottom:14px">Elevation</h4><div class="row" style="gap:18px"><div style="width:72px;height:72px;border-radius:16px;background:#fff;box-shadow:var(--shadow-sm)"></div><div style="width:72px;height:72px;border-radius:16px;background:#fff;box-shadow:var(--shadow-md)"></div><div style="width:72px;height:72px;border-radius:16px;background:#fff;box-shadow:var(--shadow-lg)"></div></div></div>
+  </div>
+</section>
+
+<section class="ds-block" id="motifs">
+  <h2>Brand motifs</h2>
+  <div class="grid g4">
+    <div class="ds-demo center"><div style="width:130px;margin:0 auto 12px;color:var(--umber)" data-figure=""></div><b class="small">The mark · Signature</b><p class="xs muted">Umber with a Clay heart. Reads “dh”.</p></div>
+    <div class="ds-demo center"><div style="width:130px;margin:0 auto 12px" data-figure="" data-variant="spectrum"></div><b class="small">The mark · Spectrum</b><p class="xs muted">Clay · Honey · Dawn = family · doula · clinician.</p></div>
+    <div class="ds-demo center" style="position:relative;overflow:hidden;min-height:200px"><div class="orn orn-tr" style="width:130px"></div><div class="orn orn-bl gold" style="width:110px"></div><b class="small" style="position:relative;top:70px">Threshold arcs</b><p class="xs muted" style="position:relative;top:70px">Three graded strokes, cropped from a corner.</p></div>
+    <div class="ds-demo center"><div class="frame" style="width:110px;margin:0 auto 22px;aspect-ratio:3/4"><img src="assets/portrait-front.jpg" alt="" loading="lazy"></div><b class="small">Stacked frame</b><p class="xs muted">Layered offset frame for hero portraits.</p></div>
+  </div>
+  <div class="grid g3" style="margin-top:var(--s5)">
+    <div class="ds-demo center"><div class="arch-photo" style="max-width:130px;margin:0 auto 12px"><img src="assets/portrait-profile.jpg" alt="" loading="lazy"></div><b class="small">Arch mask</b></div>
+    <div class="ds-demo"><div class="qa" style="padding:24px;border-radius:var(--r-md)"><div class="qa-card" style="margin-top:44px;padding-top:56px"><div class="qa-avatar">DH</div><h3 style="font-size:1.1rem;margin-bottom:12px">Ask me a question</h3><div class="input" style="background:#dcdcdc;text-align:center">Type something…</div></div></div><b class="small" style="display:block;margin-top:12px">Q&amp;A card</b></div>
+    <div class="ds-demo"><div style="height:130px;border-radius:var(--r-md);background:radial-gradient(circle at 30% 70%,#a8895c,transparent 55%),radial-gradient(circle at 80% 20%,#2f2822,transparent 50%),#6b6054"></div><b class="small" style="display:block;margin-top:12px">Mocha gradient</b><p class="xs muted">Blurred studio backdrop for dark sections.</p></div>
+  </div>
+</section>
+
+<section class="ds-block" id="buttons">
+  <h2>Buttons &amp; links</h2>
+  <div class="ds-demo stack-lg">
+    <div class="row"><a class="btn" href="#">Primary</a><a class="btn btn-ghost" href="#">Ghost</a><a class="btn btn-gold" href="#">Gold</a><a class="btn btn-danger" href="#">Destructive</a><button class="btn" disabled>Disabled</button></div>
+    <div class="row"><a class="btn btn-sm" href="#">Small</a><a class="btn btn-xs" href="#">Extra small</a><a class="link-arrow" href="#">Text link <span data-icon="arrow"></span></a></div>
+    <div class="bg-mocha-deep" style="padding:24px;border-radius:var(--r-md)"><div class="row"><a class="btn btn-light" href="#">Light</a><a class="btn btn-ghost-light" href="#">Ghost light</a></div></div>
+  </div>
+</section>
+
+<section class="ds-block" id="forms">
+  <h2>Forms &amp; selection</h2>
+  <div class="ds-demo"><div class="form-grid">
+    <div class="field"><label for="x1">Text input</label><input class="input" id="x1" placeholder="Type something…"></div>
+    <div class="field"><label for="x2">Select</label><select class="select" id="x2"><option>Medicaid</option><option>Private</option></select></div>
+    <div class="field full"><label for="x3">Textarea</label><textarea class="textarea" id="x3" placeholder="Tell us more"></textarea><span class="hint">Helper text sits below, 13px, muted.</span></div>
+    <div class="row"><label class="switch"><input type="checkbox" checked aria-label="On"><span class="track"></span></label><span class="small">Toggle · on</span></div>
+    <div class="row"><label class="switch"><input type="checkbox" aria-label="Off"><span class="track"></span></label><span class="small">Toggle · off</span></div>
+    <div class="row"><label class="switch"><input type="checkbox" disabled aria-label="Disabled"><span class="track"></span></label><span class="small">Disabled</span></div>
+    <div class="row"><span class="lock"><span data-icon="lock"></span></span><span class="small">Locked (policy)</span></div>
+  </div></div>
+</section>
+
+<section class="ds-block" id="feedback">
+  <h2>Chips, alerts &amp; tabs</h2>
+  <div class="ds-demo stack-lg">
+    <div class="row"><span class="chip">Neutral</span><span class="chip ok">Shared</span><span class="chip warn">Pending</span><span class="chip bad">Needs fix</span><span class="chip info">Submitted</span><span class="chip gold">Aligned 5/5</span><span class="chip dark">Clinical</span></div>
+    <div class="stack"><div class="alert info"><span data-icon="info"></span><span><b>Info.</b> Neutral guidance and context.</span></div><div class="alert ok"><span data-icon="check"></span><span><b>Success.</b> Likely covered by your plan.</span></div><div class="alert warn"><span data-icon="alert"></span><span><b>Caution.</b> Needs a recommendation first.</span></div><div class="alert bad"><span data-icon="alert"></span><span><b>Error.</b> The claim was denied.</span></div></div>
+    <div class="tabs" role="tablist"><button class="tab" role="tab" aria-selected="true">Overview</button><button class="tab" role="tab" aria-selected="false">Birth plan</button><button class="tab" role="tab" aria-selected="false">Messages</button></div>
+  </div>
+</section>
+
+<section class="ds-block" id="data">
+  <h2>Privacy &amp; data components</h2>
+  <div class="grid g2">
+    <div class="share-demo"><div class="share-row head"><span style="text-align:left">Section</span><span>Doula</span><span>OB-GYN</span><span>Partner</span></div>
+      <div class="share-row"><span>Labor environment</span><label class="switch"><input type="checkbox" checked aria-label="a"><span class="track"></span></label><label class="switch"><input type="checkbox" checked aria-label="b"><span class="track"></span></label><label class="switch"><input type="checkbox" aria-label="c"><span class="track"></span></label></div>
+      <div class="share-row"><span>Health history</span><span class="lock"><span data-icon="lock"></span></span><label class="switch"><input type="checkbox" checked aria-label="d"><span class="track"></span></label><span class="lock"><span data-icon="lock"></span></span></div>
+      <p class="xs muted" style="margin:12px 0 0"><b>Consent matrix.</b> Rows = sections, columns = people. Locks are policy, never a preference.</p></div>
+    <div class="stack"><div class="guard"><div class="icon-badge"><span data-icon="key"></span></div><div><h4>Guardrail callout</h4><p>Icon badge + one-line principle. Used in groups of three or six.</p></div></div>
+      <div class="table-wrap"><table><thead><tr><th>When</th><th>Who</th><th>Action</th></tr></thead><tbody><tr><td class="small">Oct 15, 4:31 PM</td><td>Dr. Lena Okafor</td><td><span class="chip">Viewed</span></td></tr><tr><td class="small">Oct 15, 4:12 PM</td><td>Amara Bell</td><td><span class="chip info">Granted access</span></td></tr></tbody></table></div>
+      <p class="xs muted">Audit table: time, actor, action chip. Always chronological, newest first.</p></div>
+  </div>
+</section>
+
+<section class="ds-block" id="commerce">
+  <h2>Merch &amp; commerce</h2>
+  <div class="grid g4" id="ds-products"></div>
+</section>
+
+<section class="ds-block" id="a11y">
+  <h2>Accessibility &amp; motion</h2>
+  <ul class="check-list" style="max-width:720px">
+    <li><span data-icon="check"></span><span><b>Focus</b>3px gold ring with 3px offset on every interactive element.</span></li>
+    <li><span data-icon="check"></span><span><b>Targets</b>Minimum 40px tall (52px for primary CTAs); 44px circular icon buttons.</span></li>
+    <li><span data-icon="check"></span><span><b>Motion</b>Reveals ≤ 800ms, ease-out. All animation is removed under <code class="tok">prefers-reduced-motion</code>.</span></li>
+    <li><span data-icon="check"></span><span><b>Language</b>Plain, warm, second-person. No jargon where a person is the audience; precise terms where a clinician is.</span></li>
+    <li><span data-icon="check"></span><span><b>Imagery</b>Real, dignified portraits of Black and brown mothers; no stock-photo clichés; always with meaningful alt text.</span></li>
+  </ul>
+</section>
+</div>
+</main>
+<div id="site-footer"></div>
+<script src="js/site.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/merch.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const sw = (n, v, d) => `<div class="ds-swatch"><div class="c" style="background:${v}${v === '#fffdf9' ? ';border-bottom:1px solid var(--line-soft)' : ''}"></div><div><b>${n}</b><code>${v}</code><div class="xs muted">${d}</div></div></div>`;
+  document.getElementById('sw-brand').innerHTML = [
+    ['Ink', '#1d1612', 'Text, pill CTAs'], ['Paper', '#fffdf9', 'Page background'], ['Cream', '#f6efe4', 'Soft sections, app canvas'], ['Sand', '#eadfcb', 'Dividers, tracks'],
+    ['Honey (camel)', '#d1a04f', 'The doula · highlights on dark'], ['Gold', '#a97f3a', 'Rules, accents (decorative)'], ['Umber', '#5a3a1e', 'The mark · gold-toned text'], ['Clay', '#aa4f36', 'The mother · the heart · AA on cream'],
+    ['Terracotta', '#8f402b', 'Merch type · alerts'], ['Mocha', '#675a4e', 'Studio backdrop · dark sections'], ['Mocha 2', '#43372f', 'Cards on dark'], ['Hearth', '#261c17', 'Deep sections · footer'],
+    ['Dawn', '#7c95b1', 'The clinician · graphic fills'], ['Dawn deep', '#3b5675', 'Clinician text on light'], ['Dawn soft', '#e3e9f0', 'Info backgrounds'], ['Muted', '#6a6055', 'Secondary text']
+  ].map(x => sw(...x)).join('');
+  document.getElementById('sw-status').innerHTML = [['OK', '#3f5e3b', 'on #e2ebdc'], ['Caution', '#8a5a10', 'on #f6e8cc'], ['Error', '#92312a', 'on #f4dcd7'], ['Info', '#3b5675', 'on #dde6f0']].map(x => sw(...x)).join('');
+  document.getElementById('space-demo').innerHTML = [4, 8, 12, 16, 24, 32, 48, 72].map(n => `<div class="row" style="gap:12px"><div style="width:${n}px;height:12px;background:var(--gold);border-radius:3px"></div><code class="tok">${n}px</code></div>`).join('');
+  document.getElementById('ds-products').innerHTML = ['tote-lotus', 'wrap-tee', 'half-zip', 'lotus-bodysuit'].map(id => { const p = DH.PRODUCTS.find(x => x.id === id); return `<div class="product"><div class="product-art">${p.tag ? `<span class="chip gold">${p.tag}</span>` : ''}${DH.productArt(p, 'cream')}</div><div class="product-meta"><h3>${p.name}</h3><b>${DH.money(p.price)}</b></div></div>`; }).join('');
+});
+</script>
+</body>
+</html>

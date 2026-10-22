@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy &amp; Trust — Doula's House</title>
+<meta name="description" content="How Doula's House protects birth plans and health information: consent-first sharing, role-based access, audit logs, break-glass, and HIPAA-minded design.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="trust">
+<div id="site-header"></div>
+<main id="main">
+
+<section class="page-hero bg-mocha-deep">
+  <div class="orn orn-tr gold" style="opacity:.6"></div>
+  <div class="container" style="max-width:900px">
+    <span class="eyebrow" style="color:var(--camel)">Privacy &amp; trust</span>
+    <h1>Your story is <em>yours.</em></h1>
+    <p class="lead">A birth plan can include health information, so privacy isn't a footer link here — it shapes how every screen works. These are the principles the product is built on.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head left reveal"><span class="eyebrow">Principles</span><h2>Twelve guardrails</h2></div>
+    <div class="grid g2">
+      <div class="guard reveal"><div class="icon-badge" data-icon="key"></div><div><h4>1 · Consent before access</h4><p>Nothing is visible to anyone until the mother grants it — per person, per section, with an end date.</p></div></div>
+      <div class="guard reveal"><div class="icon-badge" data-icon="layers"></div><div><h4>2 · Minimum necessary</h4><p>Each role sees only what it needs. A doula sees the plan she's been given, not the medical chart.</p></div></div>
+      <div class="guard reveal"><div class="icon-badge" data-icon="shield"></div><div><h4>3 · Role-based access control</h4><p>Clinical and non-clinical roles are enforced by the system, not by good manners. Clinical sections can't be shared with non-clinical accounts.</p></div></div>
+      <div class="guard reveal"><div class="icon-badge" data-icon="history"></div><div><h4>4 · Audit logging</h4><p>Every view, share, revoke, export and sign-in is recorded. Patients can see their own access log.</p></div></div>
+      <div class="guard reveal"><div class="icon-badge" data-icon="alert"></div><div><h4>5 · Break-glass emergency access</h4><p>In an emergency a clinician can request time-boxed access with a stated reason. It's logged, limited to clinical sections, reviewed afterwards and the patient is notified.</p></div></div>
+      <div class="guard reveal"><div class="icon-badge" data-icon="message"></div><div><h4>6 · No PHI in notifications</h4><p>Emails, texts and push alerts say “you have a new message” — never what it says or who it concerns.</p></div></div>
+      <div class="guard reveal"><div class="icon-badge" data-icon="lock"></div><div><h4>7 · Encryption everywhere</h4><p>Encrypted in transit and at rest, with strong authentication and multi-factor sign-in for professionals.</p></div></div>
+      <div class="guard reveal"><div class="icon-badge" data-icon="clock"></div><div><h4>8 · Auto-lock &amp; auto-expire</h4><p>Idle sessions lock after a short period. Shared access ends automatically on the date the patient sets.</p></div></div>
+      <div class="guard reveal"><div class="icon-badge" data-icon="file"></div><div><h4>9 · Business Associate Agreements</h4><p>When we handle protected health information for a practice, we sign a BAA, and so do our vendors that touch that data.</p></div></div>
+      <div class="guard reveal"><div class="icon-badge" data-icon="share"></div><div><h4>10 · Separate worlds</h4><p>The merch store and scholarship applications never touch health data, and the care app never shares data with marketing.</p></div></div>
+      <div class="guard reveal"><div class="icon-badge" data-icon="eye"></div><div><h4>11 · Billing: data on a diet</h4><p>Claims include only what a payer requires. Doula visit notes stay private to the doula unless she chooses otherwise.</p></div></div>
+      <div class="guard reveal"><div class="icon-badge" data-icon="trash"></div><div><h4>12 · Your data, your call</h4><p>Export your plan, revoke everyone, or delete your account. Retention follows legal requirements and is explained plainly.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-cream">
+  <div class="container split">
+    <div class="stack reveal">
+      <span class="eyebrow">What it looks like</span>
+      <h2>Privacy you can see and touch</h2>
+      <p class="lead">Every guardrail has a place in the interface. Open the demo and try them: toggle access, watch the audit log fill, and see how a doula's and clinician's views change.</p>
+      <a class="btn" href="app.html">Open the product demo</a>
+    </div>
+    <div class="card reveal">
+      <h3>Honest limits</h3>
+      <p>No software can make a practice compliant on its own. HIPAA also depends on people and policies — training, access reviews, incident response. We aim to make the safe way the easy way, and we'll be clear about what we do and what remains with each practice.</p>
+      <div class="alert warn" style="margin-top:16px"><span data-icon="info"></span><span><b>Prototype notice:</b> this site is a design prototype with fictional data. Before launch, the privacy policy, terms and these principles must be reviewed by qualified healthcare-privacy counsel and backed by a HIPAA-eligible infrastructure and security assessment.</span></div>
+    </div>
+  </div>
+</section>
+</main>
+<div id="site-footer"></div>
+<script src="js/site.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/merch.js"></script>
+</body>
+</html>
